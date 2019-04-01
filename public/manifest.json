@@ -1,0 +1,15 @@
+{
+  "short_name": "Vincent Monard",
+  "name": "Vincent Monard – Portfolio",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "320x320",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#4a0072",
+  "background_color": "#7b1fa2"
+}
