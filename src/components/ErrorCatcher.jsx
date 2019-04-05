@@ -2,8 +2,8 @@ import React from "react";
 import ErrorPage from "../pages/ErrorPage.jsx";
 
 class ErrorCatcher extends React.PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { hasError: false };
   }
 

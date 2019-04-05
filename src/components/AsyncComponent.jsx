@@ -9,8 +9,8 @@ import React from "react";
  */
 const asyncComponent = importComponent => {
   class AsyncComponent extends React.PureComponent {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       this.state = { Component: null };
     }
 

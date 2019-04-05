@@ -1,42 +1,13 @@
 import React from "react";
 import Footer from "./Footer.jsx";
 import AsyncContent from "../components/AsyncContent";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
-// import Favicon from "../assets/logo.png";
-// import Avatar from "@material-ui/core/Avatar/Avatar";
 import ErrorCatcher from "./ErrorCatcher";
 import Grid from "@material-ui/core/Grid/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-//TODO Splitter en plusieurs components et utiliser React Router pour les inclure
 const Decoration = props => (
   <div className={props.classes.root}>
-    <Grid container>
-      <Grid item xs={12}>
-        <AppBar position="static">
-          <Toolbar variant="dense" className={props.classes.flexContainer}>
-            {/*<Avatar*/}
-            {/*  alt="Website icon"*/}
-            {/*  src={Favicon}*/}
-            {/*  className={props.classes.avatar}*/}
-            {/*  component={Link}*/}
-            {/*  to="/"*/}
-            {/*/>*/}
-            <Typography
-              variant="h6"
-              color="inherit"
-              component={Link}
-              noWrap
-              to="/"
-              className={props.classes.title}>
-              TODO - TITLE
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </Grid>
+    <Grid container className={props.classes.page}>
       <Grid item xs={12}>
         <main className={props.classes.content}>
           <ErrorCatcher>
@@ -53,23 +24,12 @@ const Decoration = props => (
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    zIndex: 1,
-    position: "relative",
     display: "flex",
-    width: "100%"
+    flexDirection: "row-reverse",
+    justifyContent: "center"
   },
-  title: {
-    textDecoration: "none"
-  },
-  flexContainer: {
-    display: "flex",
-    alignItems: "center"
-  },
-  avatar: {
-    margin: theme.spacing.unit,
-    height: 28,
-    width: 28
+  page: {
+    maxWidth: "1200px"
   },
   content: {
     backgroundColor: theme.palette.background.default,

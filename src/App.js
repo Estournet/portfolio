@@ -4,7 +4,6 @@ import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import theme from "./theme";
 import Decoration from "./components/Decoration";
-import Homepage from "./pages/Homepage";
 
 const App = () => (
   <HashRouter>
@@ -12,7 +11,7 @@ const App = () => (
       <CssBaseline />
       <MuiThemeProvider theme={theme}>
         <Switch>
-          <Route exact path="/" render={() => <Homepage />} />
+          {/*<Route exact path="/" render={() => <Homepage />} />*/}
           <Route path="/" render={() => <Decoration />} />
         </Switch>
       </MuiThemeProvider>
