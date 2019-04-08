@@ -22,6 +22,7 @@ import AsyncContent from "../components/AsyncContent";
 import ErrorCatcher from "./ErrorCatcher";
 import Grid from "@material-ui/core/Grid/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
+import PropTypes from "prop-types";
 
 const Decoration = props => (
   <div className={props.classes.root}>
@@ -55,5 +56,9 @@ const styles = theme => ({
     minHeight: "100vh"
   }
 });
+
+Decoration.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles, { withTheme: true })(Decoration);

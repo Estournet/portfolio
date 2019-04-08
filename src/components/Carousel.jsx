@@ -23,6 +23,7 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withTheme } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 
 const Carousel = props => {
   const { screenshots, theme, classes } = props;
@@ -113,5 +114,11 @@ const style = () => ({
     overflow: "hidden"
   }
 });
+
+Carousel.propTypes = {
+  screenshots: PropTypes.arrayOf(PropTypes.string),
+  theme: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
+};
 
 export default withTheme()(withStyles(style)(Carousel));

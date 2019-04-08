@@ -1,5 +1,5 @@
 {
-  "short_name": "Vincent Monard",
+  "short_name": "Portfolio",
   "name": "Vincent Monard – Portfolio",
   "icons": [
     {
@@ -10,6 +10,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#4a0072",
+  "theme_color": "#0277BD",
   "background_color": "#7b1fa2"
 }

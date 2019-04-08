@@ -109,18 +109,29 @@ const Me = props => (
           </Grid>
           <Grid item md={6} xs={12}>
             <Typography variant="body1" paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin leo
-              ante, faucibus vitae nulla ut, laoreet venenatis odio. Fusce
-              facilisis magna nulla, in rhoncus purus sodales accumsan. Nulla a
-              mollis tortor, vitae ultricies urna. Nulla tincidunt vel nulla in
-              rutrum. In vel suscipit lectus.
+              Bienvenue sur mon portfolio. Sur ce site vous trouverez quelques
+              informations sur mon parcours et mes compétences mais, surtout,
+              accéder à mes différents projets. Je vous invite à aller sur mon{" "}
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/vincent-monard/"
+                rel="noopener noreferrer">
+                LinkedIn
+              </a>{" "}
+              si vous souhaitez plus d'information ou à m'envoyer directement un
+              email.
             </Typography>
-            <Typography variant="body1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin leo
-              ante, faucibus vitae nulla ut, laoreet venenatis odio. Fusce
-              facilisis magna nulla, in rhoncus purus sodales accumsan. Nulla a
-              mollis tortor, vitae ultricies urna. Nulla tincidunt vel nulla in
-              rutrum. In vel suscipit lectus.
+            <Typography variant="body1" paragraph>
+              Fraichement diplomé de mon école d'ingénieur, ESIEE Paris, je suis
+              un développeur polyvalant. Comme vous pourrez le voir, j'ai pu
+              travailler sur des technologies web, mobile mais j'ai aussi des
+              connaissances dans l'algorithmique, le parallélisme, les
+              compilateurs etc.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              J'ai aussi pas mal voyagé, notamment en Thaïlande pour faire un
+              semestre d'études à l'étranger, ou encore en Amérique du Sud,
+              seul, pendant quelques mois.
             </Typography>
           </Grid>
         </Grid>

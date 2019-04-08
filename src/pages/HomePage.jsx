@@ -24,7 +24,8 @@ import Grid from "@material-ui/core/Grid";
 import Me from "../components/Me";
 import Studies from "../components/Studies.jsx";
 import { Typography } from "@material-ui/core";
-import projectsFile from "../projects.json";
+import projectsFile from "../datas/projects.json";
+import Languages from "../components/Languages";
 
 const HomePage = props => (
   <Grid container spacing={32}>
@@ -39,6 +40,14 @@ const HomePage = props => (
     <Grid item xs={12}>
       <Studies />
     </Grid>
+    <Grid item xs={12}>
+      <Typography variant="h4" className={props.classes.title}>
+        Mes compétences
+      </Typography>
+    </Grid>
+    <Grid item xs={12}>
+      <Languages />
+    </Grid>{" "}
     <Grid item xs={12}>
       <Typography variant="h4" className={props.classes.title}>
         Mes projets

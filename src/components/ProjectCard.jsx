@@ -42,7 +42,9 @@ const ProjectCard = props => (
         {props.name}
       </Typography>
       <ChipGroup chips={props.languages} />
-      <Typography component="p">{props.shortDescription}</Typography>
+      <Typography align="justify" component="p">
+        {props.shortDescription}
+      </Typography>
     </CardContent>
     <CardActions>
       {props.link && (
@@ -74,6 +76,7 @@ ProjectCard.propTypes = {
   shortDescription: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired
 };
+
 const styles = {
   media: {
     height: 340

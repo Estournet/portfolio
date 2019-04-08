@@ -22,7 +22,7 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
-import projectsFile from "../projects.json";
+import projectsFile from "../datas/projects.json";
 import ChipGroup from "../components/ChipGroup";
 import Carousel from "../components/Carousel";
 import Button from "@material-ui/core/Button";
@@ -60,7 +60,7 @@ const ProjectPage = props => {
       </Grid>
       <Grid item xs={12}>
         {project.descriptions.map(description => (
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" paragraph key={description}>
             {description}
           </Typography>
         ))}
