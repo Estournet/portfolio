@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography/Typography";
 import Divider from "@material-ui/core/Divider/Divider";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 
 class Footer extends React.PureComponent {
   render() {
@@ -11,7 +12,8 @@ class Footer extends React.PureComponent {
       <footer className={classes.footer}>
         <Divider className={classes.divider} />
         <Typography color="textSecondary" align="center">
-          Créé par Vincent M.
+          <FontAwesomeIcon flip="horizontal" icon={faCopyright} fixedWidth />{" "}
+          Copyleft 2019 - Créé par Vincent Monard.
         </Typography>
         <Typography variant="caption" color="textSecondary" align="center">
           {"Site sous license "}
@@ -31,24 +33,6 @@ class Footer extends React.PureComponent {
             GitHub
           </a>
           .
-        </Typography>
-        <Typography
-          className={classes.link}
-          variant="caption"
-          color="textSecondary"
-          align="center"
-          component={Link}
-          to={"/howto"}>
-          Comment utiliser le site ?
-        </Typography>
-        <Typography
-          className={classes.link}
-          variant="caption"
-          color="textSecondary"
-          align="center"
-          component={Link}
-          to={"/scarlettjohansson"}>
-          SJ
         </Typography>
       </footer>
     );

@@ -14,7 +14,9 @@ import TodayIcon from "@material-ui/icons/Today";
 import PlaceIcon from "@material-ui/icons/Place";
 import EmailIcon from "@material-ui/icons/AlternateEmail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Me = props => (
   <Paper className={props.classes.paper}>
@@ -25,11 +27,13 @@ const Me = props => (
           alt="Vincent Monard"
           className={props.classes.picture}
         />
-        <div className={props.classes.title}>
-          <Typography variant="h2" paragraph>
+        <div>
+          <Typography align="center" variant="h2" paragraph>
             Vincent Monard
           </Typography>
-          <Typography variant="h4">Développeur Fullstack</Typography>
+          <Typography align="center" color="textSecondary" variant="h4">
+            Développeur Fullstack
+          </Typography>
         </div>
       </Grid>
       <Grid item xs={12}>
@@ -57,16 +61,42 @@ const Me = props => (
                 </ListItemIcon>
                 <ListItemText primary="vincent.monard[at]free.fr" />
               </ListItem>
-              <ListItem>
+              <ListItem
+                button
+                component="a"
+                target="_blank"
+                href="https://github.com/Estournet/">
                 <ListItemIcon>
-                  <FontAwesomeIcon icon={faGithub} />
+                  <FontAwesomeIcon icon={faGithub} size="lg" fixedWidth />
                 </ListItemIcon>
-                <ListItemText primary="Github" />
+                <ListItemText primary="github.com/Estournet/" />
+                <ListItemSecondaryAction>
+                  <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem
+                button
+                component="a"
+                target="_blank"
+                href="https://www.linkedin.com/in/vincent-monard/">
+                <ListItemIcon>
+                  <FontAwesomeIcon icon={faLinkedin} size="lg" fixedWidth />
+                </ListItemIcon>
+                <ListItemText primary="linkedin.com/in/vincent-monard/" />
+                <ListItemSecondaryAction>
+                  <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth />
+                </ListItemSecondaryAction>
               </ListItem>
             </List>
-            <Divider />
           </Grid>
           <Grid item md={6} xs={12}>
+            <Typography variant="body1" paragraph>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin leo
+              ante, faucibus vitae nulla ut, laoreet venenatis odio. Fusce
+              facilisis magna nulla, in rhoncus purus sodales accumsan. Nulla a
+              mollis tortor, vitae ultricies urna. Nulla tincidunt vel nulla in
+              rutrum. In vel suscipit lectus.
+            </Typography>
             <Typography variant="body1">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin leo
               ante, faucibus vitae nulla ut, laoreet venenatis odio. Fusce
@@ -100,8 +130,7 @@ const styles = theme => ({
   picture: {
     maxWidth: "256px",
     margin: theme.spacing.unit * 2
-  },
-  title: {}
+  }
 });
 
 export default withStyles(styles)(Me);

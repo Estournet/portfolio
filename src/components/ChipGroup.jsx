@@ -2,7 +2,32 @@ import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import Chip from "@material-ui/core/Chip";
-import Icon from "@material-ui/core/Icon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAndroid,
+  faJava,
+  faNodeJs,
+  faReact
+} from "@fortawesome/free-brands-svg-icons";
+
+const languages = {
+  react: {
+    icon: faReact,
+    name: "React"
+  },
+  android: {
+    icon: faAndroid,
+    name: "Android"
+  },
+  java: {
+    icon: faJava,
+    name: "Java"
+  },
+  node: {
+    icon: faNodeJs,
+    name: "Node.js"
+  }
+};
 
 const ChipGroup = props => (
   <div className={props.classes.root}>
@@ -10,13 +35,11 @@ const ChipGroup = props => (
       <Chip
         key={chip}
         icon={
-          <Icon className={props.classes.icon}>
-            <i className="fab fa-android" />
-          </Icon>
+          <FontAwesomeIcon icon={languages[chip].icon} size="lg" fixedWidth />
         }
-        color="primary"
+        color="secondary"
         variant="outlined"
-        label={chip}
+        label={languages[chip].name}
         className={props.classes.chip}
       />
     ))}
@@ -33,13 +56,11 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "left",
     flexWrap: "wrap",
-    padding: theme.spacing.unit / 2
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit
   },
   chip: {
-    margin: theme.spacing.unit / 2
-  },
-  icon: {
-    margin: theme.spacing.unit
+    marginRight: theme.spacing.unit / 2
   }
 });
 
