@@ -1,0 +1,28 @@
+{
+  "steps": [
+    {
+      "year": 2013,
+      "label": "Bac Scientifique"
+    },
+    {
+      "year": 2015,
+      "label": "Stage à la BRED (3\u00a0mois)"
+    },
+    {
+      "year": 2015,
+      "label": "DUT Informatique"
+    },
+    {
+      "year": 2017,
+      "label": "Stage à l'INA (3\u00a0mois)"
+    },
+    {
+      "year": 2018,
+      "label": "Stage chez Oui.SNCF (6\u00a0mois)"
+    },
+    {
+      "year": 2018,
+      "label": "Diplôme d'ingénieur ESIEE\u00a0Paris"
+    }
+  ]
+}
