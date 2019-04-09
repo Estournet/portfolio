@@ -20,8 +20,8 @@ import React from "react";
 import Typography from "@material-ui/core/Typography/Typography";
 import Divider from "@material-ui/core/Divider/Divider";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCopyright } from "@fortawesome/free-regular-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCopyright} from "@fortawesome/free-regular-svg-icons";
 import PropTypes from "prop-types";
 
 const Footer = props => (
@@ -42,10 +42,10 @@ const Footer = props => (
       </a>
       {". Voir le projet sur "}
       <a
-        href="https://github.com/Estournet/"
-        rel="noopener noreferrer"
-        target="_blank"
-        className={props.classes.link}>
+          href="https://github.com/Estournet/portfolio"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={props.classes.link}>
         GitHub
       </a>
       .

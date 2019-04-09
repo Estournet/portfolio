@@ -31,10 +31,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import TodayIcon from "@material-ui/icons/Today";
 import PlaceIcon from "@material-ui/icons/Place";
 import EmailIcon from "@material-ui/icons/AlternateEmail";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import {faExternalLinkAlt} from "@fortawesome/free-solid-svg-icons";
 
 const Me = props => (
   <Paper className={props.classes.paper}>
@@ -123,7 +123,7 @@ const Me = props => (
             </Typography>
             <Typography variant="body1" paragraph>
               Fraichement diplomé de mon école d'ingénieur, ESIEE Paris, je suis
-              un développeur polyvalant. Comme vous pourrez le voir, j'ai pu
+              un développeur polyvalent. Comme vous pourrez le voir, j'ai pu
               travailler sur des technologies web, mobile mais j'ai aussi des
               connaissances dans l'algorithmique, le parallélisme, les
               compilateurs etc.

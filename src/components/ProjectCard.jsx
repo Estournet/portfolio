@@ -26,61 +26,64 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Card from "@material-ui/core/Card";
 import ChipGroup from "./ChipGroup";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faExternalLinkAlt} from "@fortawesome/free-solid-svg-icons";
 
 const ProjectCard = props => (
-  <Card>
-    <CardMedia
-      className={props.classes.media}
-      image={require("../assets/" + props.banner)}
-      title={props.name}
-    />
-    <CardContent>
-      <Typography gutterBottom variant="h5" component="h2">
-        {props.name}
-      </Typography>
-      <ChipGroup chips={props.languages} />
-      <Typography align="justify" component="p">
-        {props.shortDescription}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      {props.link && (
-        <Button
-          size="small"
-          color="primary"
-          href={props.link}
-          target="_blank"
-          rel="noopener noreferrer">
-          Voir le projet&nbsp;
-          <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth />
-        </Button>
-      )}
-      <Button
-        size="small"
-        variant="contained"
-        color="primary"
-        component={Link}
-        to={"/project/" + props.name}>
-        En savoir plus
-      </Button>
-    </CardActions>
-  </Card>
+    <Card>
+        <CardMedia
+            className={props.classes.media}
+            image={require("../assets/" + props.banner)}
+            title={props.name}
+        />
+        <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+                {props.name}
+            </Typography>
+            <ChipGroup chips={props.languages}/>
+            <Typography align="justify" component="p">
+                {props.shortDescription}
+            </Typography>
+        </CardContent>
+        <CardActions className={props.classes.cardAction}>
+            {props.link && (
+                <Button
+                    size="small"
+                    color="primary"
+                    href={props.link}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Voir le projet&nbsp;
+                    <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
+                </Button>
+            )}
+            <Button
+                size="small"
+                variant="contained"
+                color="primary"
+                component={Link}
+                to={"/project/" + props.name}>
+                En savoir plus
+            </Button>
+        </CardActions>
+    </Card>
 );
 
 ProjectCard.propTypes = {
-  banner: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  shortDescription: PropTypes.string.isRequired,
-  classes: PropTypes.object.isRequired
+    banner: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    shortDescription: PropTypes.string.isRequired,
+    classes: PropTypes.object.isRequired
 };
 
-const styles = {
-  media: {
-    height: 340
-  }
-};
+const styles = theme => ({
+    media: {
+        height: 340
+    },
+    cardAction: {
+        marginBottom: theme.spacing.unit,
+    }
+});
 
 export default withStyles(styles)(ProjectCard);
