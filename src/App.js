@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,10 +18,10 @@
 
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import theme from "./theme";
 import Decoration from "./components/Decoration";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 
 const App = () => (
   <HashRouter>

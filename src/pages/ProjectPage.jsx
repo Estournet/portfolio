@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -17,17 +17,14 @@
  */
 
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
-import Grid from "@material-ui/core/Grid";
-import { Typography } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
+import { Button, Grid, Paper, Typography } from "@material-ui/core";
 import projectsFile from "../datas/projects.json";
 import ChipGroup from "../components/ChipGroup";
 import Carousel from "../components/Carousel";
-import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { withStyles } from "@material-ui/core/styles";
 
 const ProjectPage = props => {
   const project = projectsFile.projects.filter(
@@ -35,7 +32,7 @@ const ProjectPage = props => {
   )[0];
 
   return (
-    <Grid container spacing={32}>
+    <Grid container spacing={1}>
       <Grid item xs={12}>
         <Paper className={props.classes.paper}>
           <img
@@ -100,11 +97,11 @@ ProjectPage.propTypes = {
 };
 const styles = theme => ({
   title: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1)
   },
   paper: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     display: "flex",
     justifyContent: "left",
     alignItems: "center",
@@ -112,7 +109,7 @@ const styles = theme => ({
   },
   picture: {
     maxWidth: "128px",
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing(2)
   },
   inline: {
     display: "flex",

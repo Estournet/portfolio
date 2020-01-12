@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -17,28 +17,31 @@
  */
 
 import React from "react";
-import Typography from "@material-ui/core/Typography/Typography";
-import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import AuthorPicture from "../assets/author_picture.png";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import TodayIcon from "@material-ui/icons/Today";
 import PlaceIcon from "@material-ui/icons/Place";
 import EmailIcon from "@material-ui/icons/AlternateEmail";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import {faExternalLinkAlt} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { withStyles } from "@material-ui/core/styles";
+
+import {
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText,
+  Paper,
+  Typography
+} from "@material-ui/core";
 
 const Me = props => (
   <Paper className={props.classes.paper}>
-    <Grid container spacing={40}>
+    <Grid container spacing={5}>
       <Grid item xs={12} className={props.classes.inline}>
         <img
           src={AuthorPicture}
@@ -58,7 +61,7 @@ const Me = props => (
         <Divider variant="middle" />
       </Grid>
       <Grid item xs={12}>
-        <Grid container spacing={16}>
+        <Grid container spacing={2}>
           <Grid item md={6} xs={12}>
             <List>
               <ListItem>
@@ -146,7 +149,7 @@ Me.propTypes = {
 
 const styles = theme => ({
   paper: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     display: "flex",
     justifyContent: "center"
   },
@@ -158,7 +161,7 @@ const styles = theme => ({
   },
   picture: {
     maxWidth: "256px",
-    margin: theme.spacing.unit * 2
+    margin: theme.spacing(2)
   }
 });
 

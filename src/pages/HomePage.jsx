@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -17,18 +17,17 @@
  */
 
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import ProjectCard from "../components/ProjectCard";
-import Grid from "@material-ui/core/Grid";
 import Me from "../components/Me";
 import Studies from "../components/Studies.jsx";
-import { Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import projectsFile from "../datas/projects.json";
 import Languages from "../components/Languages";
+import { withStyles } from "@material-ui/core/styles";
 
 const HomePage = props => (
-  <Grid container spacing={32}>
+  <Grid container spacing={4}>
     <Grid item xs={12}>
       <Me />
     </Grid>
@@ -66,8 +65,8 @@ HomePage.propTypes = {
 };
 const styles = theme => ({
   title: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1)
   }
 });
 

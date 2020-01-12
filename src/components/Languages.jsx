@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -17,12 +17,8 @@
  */
 
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
-import Card from "@material-ui/core/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CardHeader from "@material-ui/core/CardHeader";
-import Avatar from "@material-ui/core/Avatar";
 import {
   faAndroid,
   faCss3Alt,
@@ -35,9 +31,9 @@ import {
   faPhp,
   faReact
 } from "@fortawesome/free-brands-svg-icons";
-import Grid from "@material-ui/core/Grid";
-import { Typography } from "@material-ui/core";
+import { Avatar, Card, CardHeader, Grid, Typography } from "@material-ui/core";
 import { faDatabase } from "@fortawesome/free-solid-svg-icons";
+import { withStyles } from "@material-ui/core/styles";
 
 // TODO Put those constants in a JSON file
 const webLanguages = {
@@ -86,7 +82,7 @@ const section = (props, data) => (
       </Typography>
     </Grid>
     <Grid item xs={12}>
-      <Grid container spacing={8}>
+      <Grid container spacing={1}>
         {data.langages.map(language => (
           <Grid item md={2} sm={4} xs={12} key={language.name}>
             <Card>
@@ -115,7 +111,7 @@ const section = (props, data) => (
 );
 
 const Languages = props => (
-  <Grid container spacing={8}>
+  <Grid container spacing={1}>
     {section(props, webLanguages)}
     {section(props, classicLanguages)}
     {section(props, databases)}
@@ -128,8 +124,8 @@ Languages.propTypes = {
 };
 const styles = theme => ({
   title: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1)
   },
   avatar: {
     background: theme.palette.primary.main

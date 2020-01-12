@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -19,15 +19,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import Grid from "@material-ui/core/Grid/Grid";
-import Typography from "@material-ui/core/Typography/Typography";
-import Button from "@material-ui/core/Button/Button";
-import withStyles from "@material-ui/core/styles/withStyles";
+import { withStyles } from "@material-ui/core/styles";
+
+import { Button, Grid, Typography } from "@material-ui/core";
 
 const ErrorPage = props => (
   <Grid
     container
-    spacing={40}
+    spacing={5}
     justify="center"
     alignContent="center"
     alignItems="center"
@@ -53,8 +52,8 @@ const ErrorPage = props => (
 
 const styles = theme => ({
   button: {
-    marginTop: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 4
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4)
   }
 });
 

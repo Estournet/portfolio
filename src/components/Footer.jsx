@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -17,19 +17,19 @@
  */
 
 import React from "react";
-import Typography from "@material-ui/core/Typography/Typography";
-import Divider from "@material-ui/core/Divider/Divider";
-import withStyles from "@material-ui/core/styles/withStyles";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCopyright} from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+
+import { Divider, Typography } from "@material-ui/core";
 
 const Footer = props => (
   <footer className={props.classes.footer}>
     <Divider className={props.classes.divider} />
     <Typography color="textSecondary" align="center">
       <FontAwesomeIcon flip="horizontal" icon={faCopyright} fixedWidth />{" "}
-      Copyleft 2019 - Créé par Vincent Monard.
+      Copyleft 2020 - Créé par Vincent Monard.
     </Typography>
     <Typography variant="caption" color="textSecondary" align="center">
       {"Site sous license "}
@@ -42,10 +42,10 @@ const Footer = props => (
       </a>
       {". Voir le projet sur "}
       <a
-          href="https://github.com/Estournet/portfolio"
-          rel="noopener noreferrer"
-          target="_blank"
-          className={props.classes.link}>
+        href="https://github.com/Estournet/portfolio"
+        rel="noopener noreferrer"
+        target="_blank"
+        className={props.classes.link}>
         GitHub
       </a>
       .
@@ -58,7 +58,7 @@ const styles = theme => ({
     padding: "20px 10%" // Top & Bottom : 20px, Left & Right : 10%
   },
   divider: {
-    margin: theme.spacing.unit
+    margin: theme.spacing(1)
   },
   link: {
     color: theme.palette.secondary.dark,

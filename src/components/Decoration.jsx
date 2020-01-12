@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -20,9 +20,9 @@ import React from "react";
 import Footer from "./Footer.jsx";
 import AsyncContent from "../components/AsyncContent";
 import ErrorCatcher from "./ErrorCatcher";
-import Grid from "@material-ui/core/Grid/Grid";
-import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
 
 const Decoration = props => (
   <div className={props.classes.root}>
@@ -52,7 +52,7 @@ const styles = theme => ({
   },
   content: {
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
     minHeight: "100vh"
   }
 });
@@ -61,4 +61,4 @@ Decoration.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(Decoration);
+export default withStyles(styles, {})(Decoration);

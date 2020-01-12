@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -17,9 +17,7 @@
  */
 
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
-import Chip from "@material-ui/core/Chip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAndroid,
@@ -27,6 +25,8 @@ import {
   faNodeJs,
   faReact
 } from "@fortawesome/free-brands-svg-icons";
+import { withStyles } from "@material-ui/core/styles";
+import { Chip } from "@material-ui/core";
 
 const languages = {
   react: {
@@ -74,11 +74,11 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "left",
     flexWrap: "wrap",
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1)
   },
   chip: {
-    marginRight: theme.spacing.unit / 2
+    marginRight: theme.spacing(0.5)
   }
 });
 

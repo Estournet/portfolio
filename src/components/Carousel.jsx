@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -17,13 +17,12 @@
  */
 
 import React from "react";
-import MobileStepper from "@material-ui/core/MobileStepper";
-import Button from "@material-ui/core/Button";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import withStyles from "@material-ui/core/styles/withStyles";
-import { withTheme } from "@material-ui/core/styles";
+import { withStyles, withTheme } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
+
+import { Button, MobileStepper } from "@material-ui/core";
 
 const Carousel = props => {
   const { screenshots, theme, classes } = props;
@@ -121,4 +120,4 @@ Carousel.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withTheme()(withStyles(style)(Carousel));
+export default withTheme(withStyles(style)(Carousel));
