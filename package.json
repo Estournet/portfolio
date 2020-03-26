@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "gh-pages": "^2.2.0",
-    "husky": "^4.0.7"
+    "husky": "^4.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
