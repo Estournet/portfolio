@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -16,25 +16,25 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
-import ErrorPage from "../pages/ErrorPage.jsx";
+import React from 'react';
+import ErrorPage from '../pages/ErrorPage.jsx';
 
 class ErrorCatcher extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
+	constructor(props) {
+		super(props);
+		this.state = { hasError: false };
+	}
 
-  componentDidCatch(error, info) {
-    this.setState({ hasError: true, error });
-    if (process.env.NODE_ENV === "production") console.error(error, info);
-  }
+	componentDidCatch(error, info) {
+		this.setState({ hasError: true, error });
+		if (process.env.NODE_ENV === 'production') console.error(error, info);
+	}
 
-  render() {
-    const { hasError, error } = this.state;
-    if (hasError) return <ErrorPage error={error.toString()} />;
-    return this.props.children;
-  }
+	render() {
+		const { hasError, error } = this.state;
+		if (hasError) return <ErrorPage error={error.toString()} />;
+		return this.props.children;
+	}
 }
 
 export default ErrorCatcher;

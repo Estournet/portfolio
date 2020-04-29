@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -16,28 +16,27 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import lightBlue from "@material-ui/core/colors/lightBlue";
-import pink from "@material-ui/core/colors/pink";
-import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import lightBlue from '@material-ui/core/colors/lightBlue';
+import pink from '@material-ui/core/colors/pink';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
 /**
  * Thème personnel
- * @type {Theme}
  */
 export const theme = createMuiTheme({
-  typography: {
-    useNextVariants: true,
-    fontFamily: '"Google Sans", "Roboto"'
-  },
-  palette: {
-    primary: {
-      main: lightBlue[600]
-    },
-    secondary: {
-      main: pink[700]
-    },
-    type: "light"
-  }
+	typography: {
+		useNextVariants: true,
+		fontFamily: '"Google Sans", "Roboto"'
+	},
+	palette: {
+		primary: {
+			main: lightBlue[600]
+		},
+		secondary: {
+			main: pink[700]
+		},
+		type: 'light'
+	}
 });
 
 export default theme;

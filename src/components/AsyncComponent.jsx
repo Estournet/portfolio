@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
+import React from 'react';
 
 /**
  * Charge le contenu de la page dynamiquement. Ainsi, webpack peut importer à la volée les différents bundles nécéssaires.
@@ -26,26 +26,26 @@ import React from "react";
  * En attendant que celui ci charge, revoit null (on pourrait mettre une barre de chargement)
  */
 const asyncComponent = importComponent => {
-  class AsyncComponent extends React.PureComponent {
-    constructor(props) {
-      super(props);
-      this.state = { Component: null };
-    }
+	class AsyncComponent extends React.PureComponent {
+		constructor(props) {
+			super(props);
+			this.state = { Component: null };
+		}
 
-    async componentDidMount() {
-      const { default: Component } = await importComponent();
+		async componentDidMount() {
+			const { default: Component } = await importComponent();
 
-      this.setState({ Component });
-    }
+			this.setState({ Component });
+		}
 
-    render() {
-      const { Component } = this.state;
+		render() {
+			const { Component } = this.state;
 
-      return Component ? <Component {...this.props} /> : null;
-    }
-  }
+			return Component ? <Component {...this.props} /> : null;
+		}
+	}
 
-  return AsyncComponent;
+	return AsyncComponent;
 };
 
 export default asyncComponent;

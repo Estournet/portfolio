@@ -1,6 +1,6 @@
 /*
  * Vincent Monard
- *     Copyright (C) 2019  Vincent Monard
+ *     Copyright (C) 2020  Vincent Monard
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -16,33 +16,30 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
-import withWidth from "@material-ui/core/withWidth";
-import studies from "../datas/studies";
+import React from 'react';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import withWidth from '@material-ui/core/withWidth';
+import studies from '../datas/studies';
 
-const isXSDevice = props => props.width === "xs";
+const isXSDevice = props => props.width === 'xs';
 
 const Studies = props => (
-  <Paper>
-    <Stepper
-      orientation={isXSDevice(props) ? "vertical" : "horizontal"}
-      alternativeLabel={!isXSDevice(props)}
-      activeStep={studies.steps.length}>
-      {studies.steps.map(step => (
-        <Step key={step.label}>
-          <StepLabel
-            icon={<Typography variant="body1">{step.year}</Typography>}>
-            {step.label}
-          </StepLabel>
-        </Step>
-      ))}
-    </Stepper>
-  </Paper>
+	<Paper>
+		<Stepper
+			orientation={isXSDevice(props) ? 'vertical' : 'horizontal'}
+			alternativeLabel={!isXSDevice(props)}
+			activeStep={studies.steps.length}>
+			{studies.steps.map(step => (
+				<Step key={step.label}>
+					<StepLabel icon={<Typography variant="body1">{step.year}</Typography>}>{step.label}</StepLabel>
+				</Step>
+			))}
+		</Stepper>
+	</Paper>
 );
 
 export default withWidth()(Studies);
