@@ -19,36 +19,37 @@
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Grid, Paper, Typography } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
+import { Redirect, useParams } from "react-router-dom";
 import { Carousel } from "../components/Carousel";
 import { ChipGroup } from "../components/ChipGroup";
-import { projects } from "../datas/projects.json";
-import { theme } from "../theme";
-import { useParams, Redirect } from 'react-router-dom';
+import { projects } from "../datas/projects";
 
-const ProjectPage = ( ) => {
+const ProjectPage = () => {
+  const classes = useStyles();
   const params = useParams();
-  const projectNameParam = decodeURI(params.projectName.toLowerCase())
+  const projectNameParam = decodeURI(params.projectName.toLowerCase());
   const project = projects.find(
     ({ name }) => name.toLowerCase() === projectNameParam
   );
 
   if (!project)
-    return <Redirect to="/" />
+    return <Redirect to="/"/>;
 
   const { logo, languages, name, descriptions, link, screenshots } = project;
 
   return (
     <Grid container spacing={1}>
       <Grid item xs={12}>
-        <Paper style={styles.paper}>
+        <Paper className={classes.paper}>
           <img
             src={require("../assets/" + logo)}
             alt="Logo du projet"
-            style={styles.picture}
+            className={classes.picture}
           />
           <div>
-            <div style={styles.inline}>
+            <div className={classes.inline}>
               <Typography align="center" variant="h2">
                 {name}
               </Typography>
@@ -58,7 +59,7 @@ const ProjectPage = ( ) => {
         </Paper>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h4" style={styles.title}>
+        <Typography variant="h4" className={classes.title}>
           En quelques mots
         </Typography>
       </Grid>
@@ -86,7 +87,7 @@ const ProjectPage = ( ) => {
       {screenshots && (
         <React.Fragment>
           <Grid item xs={12}>
-            <Typography variant="h4" style={styles.title}>
+            <Typography variant="h4" className={classes.title}>
               Galerie
             </Typography>
           </Grid>
@@ -99,7 +100,7 @@ const ProjectPage = ( ) => {
   );
 };
 
-const styles = {
+const useStyles = makeStyles((theme) => ({
   title: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1)
@@ -120,6 +121,6 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center"
   }
-};
+}));
 
 export default ProjectPage;

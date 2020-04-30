@@ -20,43 +20,49 @@ import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Divider, Link, Typography } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
-import { theme } from "../theme";
 
-export const Footer = () => (
-  <footer style={styles.footer}>
-    <Divider style={styles.divider}/>
-    <Typography color="textSecondary" align="center">
-      <FontAwesomeIcon flip="horizontal" icon={faCopyright} fixedWidth/>{" "}
-      Copyleft 2020 - Créé par Vincent Monard.
-    </Typography>
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Site sous license "}
-      <Link
-        href="https://www.gnu.org/licenses/gpl-3.0.fr.html"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GNU GPL v3
-      </Link>
-      {". Voir le projet sur "}
-      <Link
-        href="https://github.com/Estournet/portfolio"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GitHub
-      </Link>
-      .
-    </Typography>
-  </footer>
-);
+export const Footer = () => {
+  const classes = useStyles();
+  return (
+    <footer className={classes.footer}>
+      <Divider className={classes.divider}/>
+      <Typography color="textSecondary" align="center">
+        <FontAwesomeIcon flip="horizontal" icon={faCopyright} fixedWidth/>{" "}
+        Copyleft 2020 - Créé par Vincent Monard.
+      </Typography>
+      <Typography variant="body2" color="textSecondary" align="center">
+        {"Site sous license "}
+        <Link
+          href="https://www.gnu.org/licenses/gpl-3.0.fr.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GNU GPL v3
+        </Link>
+        {". Voir le projet sur "}
+        <Link
+          href="https://github.com/Estournet/portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </Link>
+        .
+      </Typography>
+    </footer>
+  );
+};
 
-const styles = {
+const useStyles = makeStyles((theme) => ({
   footer: {
     padding: "20px 10%"
   },
   divider: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(2),
+    background: "linear-gradient(135deg, #5770FF 0, #FF75B3 60%, #FF7C6B 100%)"
   }
-};
+}));
+
+

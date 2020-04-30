@@ -12,23 +12,29 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faDatabase } from "@fortawesome/free-solid-svg-icons";
 
+export const reactLanguage = {
+  name: "React",
+  icon: faReact
+};
+export const androidLanguage = {
+  name: "Android",
+  icon: faAndroid
+};
+export const nodeLanguage = {
+  name: "Node.js",
+  icon: faNodeJs
+};
 
 export const languagesSections = [
   {
     sectionName: "Langages web",
     languages: [
-      {
-        name: "React",
-        icon: faReact
-      },
+      reactLanguage,
       {
         name: "PHP",
         icon: faPhp
       },
-      {
-        name: "Node.js",
-        icon: faNodeJs
-      },
+      nodeLanguage,
       {
         name: "HTML 5",
         icon: faHtml5
@@ -46,10 +52,7 @@ export const languagesSections = [
         name: "Java",
         icon: faJava
       },
-      {
-        name: "Android",
-        icon: faAndroid
-      },
+      androidLanguage,
       {
         name: "C"
       }

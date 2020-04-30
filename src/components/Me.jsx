@@ -31,123 +31,126 @@ import {
   Paper,
   Typography
 } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import EmailIcon from "@material-ui/icons/AlternateEmail";
 import PlaceIcon from "@material-ui/icons/Place";
 import TodayIcon from "@material-ui/icons/Today";
 import React from "react";
 import AuthorPicture from "../assets/author_picture.jpg";
-import { theme } from "../theme";
 
 const MY_BIRTHDATE_TIMESTAMP = 750729600000;
 const getMyAge = () => Math.abs(new Date(Date.now() - MY_BIRTHDATE_TIMESTAMP).getUTCFullYear() - 1970);
 
-export const Me = () => (
-  <Paper style={styles.paper}>
-    <Grid container spacing={5}>
-      <Grid item xs={12} style={styles.inline}>
-        <img
-          src={AuthorPicture}
-          alt="Vincent Monard"
-          style={styles.picture}
-        />
-        <div>
-          <Typography align="center" variant="h2" paragraph>
-            Vincent Monard
-          </Typography>
-          <Typography align="center" color="textSecondary" variant="h4">
-            Développeur Fullstack
-          </Typography>
-        </div>
-      </Grid>
-      <Grid item xs={12}>
-        <Divider variant="middle"/>
-      </Grid>
-      <Grid item xs={12}>
-        <Grid container spacing={2}>
-          <Grid item md={6} xs={12}>
-            <List>
-              <ListItem>
-                <ListItemIcon>
-                  <TodayIcon/>
-                </ListItemIcon>
-                <ListItemText primary={`${getMyAge()} ans`}/>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <PlaceIcon/>
-                </ListItemIcon>
-                <ListItemText primary="Paris, France"/>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <EmailIcon/>
-                </ListItemIcon>
-                <ListItemText primary="vincent.monard[at]free.fr"/>
-              </ListItem>
-              <ListItem
-                button
-                component="a"
-                target="_blank"
-                href="https://github.com/Estournet/">
-                <ListItemIcon>
-                  <FontAwesomeIcon icon={faGithub} size="lg" fixedWidth/>
-                </ListItemIcon>
-                <ListItemText primary="github.com/Estournet/"/>
-                <ListItemSecondaryAction>
-                  <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
-                </ListItemSecondaryAction>
-              </ListItem>
-              <ListItem
-                button
-                component="a"
-                target="_blank"
-                href="https://www.linkedin.com/in/vincent-monard/">
-                <ListItemIcon>
-                  <FontAwesomeIcon icon={faLinkedin} size="lg" fixedWidth/>
-                </ListItemIcon>
-                <ListItemText primary="linkedin.com/in/vincent-monard/"/>
-                <ListItemSecondaryAction>
-                  <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
-                </ListItemSecondaryAction>
-              </ListItem>
-            </List>
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <Typography variant="body1" paragraph>
-              Bienvenue sur mon portfolio. Sur ce site vous trouverez quelques
-              informations sur mon parcours et mes compétences mais, surtout,
-              accéder à mes différents projets. Je vous invite à aller sur mon{" "}
-              <Link
-                href="https://www.linkedin.com/in/vincent-monard/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </Link>
-              {" "}
-              si vous souhaitez plus d'information ou à m'envoyer directement un
-              email.
+export const Me = () => {
+  const classes = useStyle();
+  return (
+    <Paper className={classes.paper}>
+      <Grid container spacing={5}>
+        <Grid item xs={12} className={classes.inline}>
+          <img
+            src={AuthorPicture}
+            alt="Vincent Monard"
+            className={classes.picture}
+          />
+          <div>
+            <Typography align="center" variant="h2" paragraph>
+              Vincent Monard
             </Typography>
-            <Typography variant="body1" paragraph>
-              Fraichement diplomé de mon école d'ingénieur, ESIEE Paris, je suis
-              un développeur polyvalent. Comme vous pourrez le voir, j'ai pu
-              travailler sur des technologies web, mobile mais j'ai aussi des
-              connaissances dans l'algorithmique, le parallélisme, les
-              compilateurs etc.
+            <Typography align="center" color="textSecondary" variant="h4">
+              Développeur Fullstack
             </Typography>
-            <Typography variant="body1" paragraph>
-              J'ai aussi pas mal voyagé, notamment en Thaïlande pour faire un
-              semestre d'études à l'étranger, ou encore en Amérique du Sud,
-              seul, pendant quelques mois.
-            </Typography>
+          </div>
+        </Grid>
+        <Grid item xs={12}>
+          <Divider variant="middle"/>
+        </Grid>
+        <Grid item xs={12}>
+          <Grid container spacing={2}>
+            <Grid item md={6} xs={12}>
+              <List>
+                <ListItem>
+                  <ListItemIcon>
+                    <TodayIcon/>
+                  </ListItemIcon>
+                  <ListItemText primary={`${getMyAge()} ans`}/>
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <PlaceIcon/>
+                  </ListItemIcon>
+                  <ListItemText primary="Paris, France"/>
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <EmailIcon/>
+                  </ListItemIcon>
+                  <ListItemText primary="vincent.monard[at]free.fr"/>
+                </ListItem>
+                <ListItem
+                  button
+                  component="a"
+                  target="_blank"
+                  href="https://github.com/Estournet/">
+                  <ListItemIcon>
+                    <FontAwesomeIcon icon={faGithub} size="lg" fixedWidth/>
+                  </ListItemIcon>
+                  <ListItemText primary="github.com/Estournet/"/>
+                  <ListItemSecondaryAction>
+                    <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
+                  </ListItemSecondaryAction>
+                </ListItem>
+                <ListItem
+                  button
+                  component="a"
+                  target="_blank"
+                  href="https://www.linkedin.com/in/vincent-monard/">
+                  <ListItemIcon>
+                    <FontAwesomeIcon icon={faLinkedin} size="lg" fixedWidth/>
+                  </ListItemIcon>
+                  <ListItemText primary="linkedin.com/in/vincent-monard/"/>
+                  <ListItemSecondaryAction>
+                    <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              </List>
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <Typography variant="body1" paragraph>
+                Bienvenue sur mon portfolio. Sur ce site vous trouverez quelques
+                informations sur mon parcours et mes compétences mais, surtout,
+                accéder à mes différents projets. Je vous invite à aller sur mon{" "}
+                <Link
+                  href="https://www.linkedin.com/in/vincent-monard/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </Link>
+                {" "}
+                si vous souhaitez plus d'information ou à m'envoyer directement un
+                email.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Fraichement diplomé de mon école d'ingénieur, ESIEE Paris, je suis
+                un développeur polyvalent. Comme vous pourrez le voir, j'ai pu
+                travailler sur des technologies web, mobile mais j'ai aussi des
+                connaissances dans l'algorithmique, le parallélisme, les
+                compilateurs etc.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                J'ai aussi pas mal voyagé, notamment en Thaïlande pour faire un
+                semestre d'études à l'étranger, ou encore en Amérique du Sud,
+                seul, pendant quelques mois.
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  </Paper>
-);
+    </Paper>
+  );
+};
 
-const styles = ({
+const useStyle = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     display: "flex",
@@ -163,6 +166,6 @@ const styles = ({
     margin: theme.spacing(2),
     boxShadow: theme.shadows[4],
     maxWidth: "256px",
-    borderRadius: theme.shape.borderRadius *2
+    borderRadius: theme.shape.borderRadius * 2
   }
-});
+}));

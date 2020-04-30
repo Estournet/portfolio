@@ -17,20 +17,23 @@
  */
 
 import { Button, MobileStepper } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import React, { useState } from "react";
-import { theme } from "../theme";
 
 export const Carousel = ({ screenshots }) => {
   const [activeStep, setActiveStep] = useState(0);
   const maxSteps = screenshots.length;
+  const theme = useTheme();
+  const classes = useStyles();
 
   const handleNext = () => setActiveStep(prevActiveStep => prevActiveStep + 1);
   const handleBack = () => setActiveStep(prevActiveStep => prevActiveStep - 1);
 
   return (
-    <div style={styles.root}>
+    <div className={classes.root}>
       <MobileStepper
         steps={maxSteps}
         position="static"
@@ -61,7 +64,7 @@ export const Carousel = ({ screenshots }) => {
         }
       />
       <img
-        style={styles.img}
+        className={classes.img}
         src={require("../assets/screenshots/" + screenshots[activeStep])}
         alt="Capture d'écran du projet"
       />
@@ -97,7 +100,8 @@ export const Carousel = ({ screenshots }) => {
     </div>
   );
 };
-const styles = ({
+
+const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
     flexDirection: "column"
@@ -109,4 +113,4 @@ const styles = ({
     alignSelf: "center",
     overflow: "hidden"
   }
-});
+}));

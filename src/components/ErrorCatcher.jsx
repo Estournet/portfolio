@@ -25,16 +25,16 @@ class ErrorCatcher extends React.PureComponent {
     this.state = { hasError: false };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch = (error, info) => {
     this.setState({ hasError: true, error });
-    if (process.env.NODE_ENV === "production") console.error(error, info);
-  }
+    console.error(error, info);
+  };
 
-  render() {
+  render = () => {
     const { hasError, error } = this.state;
     if (hasError) return <ErrorPage error={error.toString()}/>;
     return this.props.children;
-  }
+  };
 }
 
 export default ErrorCatcher;

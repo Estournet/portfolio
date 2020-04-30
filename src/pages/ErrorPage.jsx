@@ -16,43 +16,46 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Button, Grid, Typography } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
 import { Link } from "react-router-dom";
-import { theme } from "../theme";
 
-const ErrorPage = ({ error = "Erreur inattendue" }) => (
-  <Grid
-    container
-    spacing={5}
-    justify="center"
-    alignContent="center"
-    alignItems="center"
-    direction="column">
-    <Grid item xs={12}>
-      <Typography variant="h2" align="center">
-        {error}
-      </Typography>
+const ErrorPage = ({ error = "Erreur inattendue" }) => {
+  const classes = useStyles();
+  return (
+    <Grid
+      container
+      spacing={5}
+      justify="center"
+      alignContent="center"
+      alignItems="center"
+      direction="column">
+      <Grid item xs={12}>
+        <pre>
+          {error}
+        </pre>
+      </Grid>
+      <Grid item xs={12}>
+        <Button
+          variant="contained"
+          size="large"
+          color="primary"
+          component={Link}
+          to="/"
+          className={classes.button}>
+          Retourner à l'accueil
+        </Button>
+      </Grid>
     </Grid>
-    <Grid item xs={12}>
-      <Button
-        variant="contained"
-        size="large"
-        color="primary"
-        component={Link}
-        to="/"
-        style={styles.button}>
-        Retourner à l'accueil
-      </Button>
-    </Grid>
-  </Grid>
-);
+  );
+};
 
-const styles = {
+const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4)
   }
-};
+}));
 
 export default ErrorPage;

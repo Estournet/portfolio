@@ -16,59 +16,45 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { faAndroid, faJava, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Chip } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
-import { theme } from "../theme";
 
-const languages = {
-  react: {
-    icon: faReact,
-    name: "React"
-  },
-  android: {
-    icon: faAndroid,
-    name: "Android"
-  },
-  java: {
-    icon: faJava,
-    name: "Java"
-  },
-  node: {
-    icon: faNodeJs,
-    name: "Node.js"
-  }
+export const ChipGroup = ({ chips = [] }) => {
+  const classes = useStyles();
+  const theme = useTheme();
+  const isDarkMode = theme.palette.type === "dark";
+
+  return (
+    <div className={classes.root}>
+      {chips.map(({ name, icon }) => (
+        <Chip
+          key={name}
+          icon={
+            <FontAwesomeIcon
+              icon={icon}
+              size="sm"
+              fixedWidth
+            />
+          }
+          color={isDarkMode ? "default" : "secondary"}
+          variant="outlined"
+          label={name}
+          size="small"
+          className={classes.chip}
+        />
+      ))}
+    </div>
+  );
 };
 
-export const ChipGroup = ({ chips = [] }) => (
-  <div style={styles.root}>
-    {chips.map(chip => (
-      <Chip
-        key={chip}
-        icon={
-          <FontAwesomeIcon
-            icon={languages[chip].icon}
-            size="sm"
-            fixedWidth
-          />
-        }
-        color="secondary"
-        variant="outlined"
-        label={languages[chip].name}
-        size="small"
-        style={styles.chip}
-      />
-    ))}
-  </div>
-);
-
-const styles = {
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "left",
     flexWrap: "wrap"
-
   },
   chip: {
     marginRight: theme.spacing(1),
@@ -76,5 +62,5 @@ const styles = {
     paddingLeft: theme.spacing(1),
     paddingRigth: theme.spacing(1)
   }
-};
+}));
 

@@ -18,64 +18,64 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, Card, CardHeader, Grid, Typography } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
 import { languagesSections } from "../datas/languages";
-import { theme } from "../theme";
 
 export const Languages = () => (
-  <Grid container spacing={1}>
+  <Grid container spacing={3}>
     {languagesSections.map(languagesSection => (
-      <LanguageSection
-        key={languagesSection.sectionName}
-        languagesSection={languagesSection}
-      />
+      <Grid item xs={12} key={languagesSection.sectionName}>
+        <LanguageSection
+          languagesSection={languagesSection}
+        />
+      </Grid>
     ))}
   </Grid>
 );
 
-const LanguageSection = ({ languagesSection }) => (
-  <React.Fragment>
-    <Grid item xs={12}>
-      <Typography variant="h5" paragraph style={styles.title}>
-        {languagesSection.sectionName}
-      </Typography>
-    </Grid>
-    <Grid item xs={12}>
-      <Grid container spacing={1}>
-        {languagesSection.languages.map(language => (
-          <Grid item md={2} sm={4} xs={6} key={language.name}>
-            <Card>
-              <CardHeader
-                avatar={
-                  <Avatar style={styles.avatar} color="white">
-                    {language.icon ? (
-                      <FontAwesomeIcon
-                        icon={language.icon}
-                        fixedWidth
-                        color="white"
-                      />
-                    ) : (
-                      language.name.charAt(0)
-                    )}
-                  </Avatar>
-                }
-                title={language.name}
-              />
-            </Card>
-          </Grid>
-        ))}
+const LanguageSection = ({ languagesSection }) => {
+  const classes = useStyles();
+  return (
+    <Grid container spacing={1}>
+      <Grid item xs={12}>
+        <Typography variant="h5">
+          {languagesSection.sectionName}
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Grid container spacing={1}>
+          {languagesSection.languages.map(language => (
+            <Grid item md={2} sm={4} xs={6} key={language.name}>
+              <Card>
+                <CardHeader
+                  avatar={
+                    <Avatar className={classes.avatar}>
+                      {language.icon ? (
+                        <FontAwesomeIcon
+                          icon={language.icon}
+                          fixedWidth
+                        />
+                      ) : (
+                        language.name.charAt(0)
+                      )}
+                    </Avatar>
+                  }
+                  title={language.name}
+                />
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
     </Grid>
-  </React.Fragment>
-);
+  );
+};
 
-const styles = ({
-  title: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(1)
-  },
+const useStyles = makeStyles(({ palette, spacing }) => ({
   avatar: {
-    background: theme.palette.primary.main
+    background: palette.primary.main,
+    color: palette.getContrastText(palette.primary.main)
   }
-});
+}));
 

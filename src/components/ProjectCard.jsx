@@ -19,56 +19,59 @@
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
 import { Link } from "react-router-dom";
-import { theme } from "../theme";
 import { ChipGroup } from "./ChipGroup";
 
-export const ProjectCard = ({ banner, name, shortDescription, link, languages }) => (
-  <Card style={styles.container}>
-    <div>
-      <CardMedia
-        style={styles.media}
-        image={require("../assets/" + banner)}
-        title={name}
-      />
-      <CardContent>
-        <div style={styles.titleContainer}>
-          <Typography gutterBottom variant="h5" component="h2" style={styles.title}>
-            {name} •
+export const ProjectCard = ({ banner, name, shortDescription, link, languages }) => {
+  const classes = useStyles();
+  return (
+    <Card className={classes.container}>
+      <div>
+        <CardMedia
+          className={classes.media}
+          image={require("../assets/" + banner)}
+          title={name}
+        />
+        <CardContent>
+          <div className={classes.titleContainer}>
+            <Typography gutterBottom variant="h5" className={classes.title}>
+              {name} •
+            </Typography>
+            <ChipGroup chips={languages}/>
+          </div>
+          <Typography component="p">
+            {shortDescription}
           </Typography>
-          <ChipGroup chips={languages}/>
-        </div>
-        <Typography component="p">
-          {shortDescription}
-        </Typography>
-      </CardContent>
+        </CardContent>
 
-    </div>
-    <CardActions style={styles.cardAction}>
-      <Button
-        size="small"
-        color="secondary"
-        component={Link}
-        to={"/project/" + encodeURI(name.toLowerCase())}>
-        En savoir plus
-      </Button>
-      {link && (
+      </div>
+      <CardActions className={classes.cardAction}>
         <Button
           size="small"
           color="secondary"
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer">
-          Voir le projet&nbsp;
-          <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
+          component={Link}
+          to={"/project/" + encodeURI(name.toLowerCase())}>
+          En savoir plus
         </Button>
-      )}
-    </CardActions>
-  </Card>
-);
+        {link && (
+          <Button
+            size="small"
+            color="secondary"
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer">
+            Voir le projet&nbsp;
+            <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
+          </Button>
+        )}
+      </CardActions>
+    </Card>
+  );
+};
 
-const styles = ({
+const useStyles = makeStyles((theme) => ({
   container: {
     height: "100%",
     display: "flex",
@@ -88,9 +91,9 @@ const styles = ({
     marginRight: theme.spacing(1)
   },
   cardAction: {
-    marginBottom: theme.spacing(1),
+    padding: theme.spacing(2),
     display: "flex",
     bottom: 0,
     justifyContent: "space-between"
   }
-});
+}));

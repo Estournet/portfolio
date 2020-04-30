@@ -16,34 +16,44 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import IconButton from "@material-ui/core/IconButton";
 import { ThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import Tooltip from "@material-ui/core/Tooltip";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import React, { lazy, Suspense, useMemo, useState } from "react";
+import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { DarkLightThemeButton } from "./components/DarkLightThemeButton";
 import ErrorCatcher from "./components/ErrorCatcher";
 import { Footer } from "./components/Footer";
 import HomePage from "./pages/HomePage";
-import { darkTheme, lightTheme, theme } from "./theme";
+import { darkTheme, lightTheme } from "./theme";
+
+const IS_DARK_MODE = "isDarkMode";
 
 const App = () => {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const classes = useStyles();
 
-  const [isDarkMode, switchDarkMode] = useState(prefersDarkMode);
+  const localStorageDarkMode = JSON.parse(localStorage.getItem(IS_DARK_MODE)); // Checks
+                                                                               // localStorage
+                                                                               // setting
+  const browserOrOSDarkMode = useMediaQuery("(prefers-color-scheme: dark)"); // Checks OS or
+                                                                             // browser setting
+
+  // If no setting in localStorage, use OS/browser setting
+  const [useDarkMode, setUseDarkMode] = useState(localStorageDarkMode === null ? browserOrOSDarkMode : localStorageDarkMode);
+
+  useEffect(() => {
+    localStorage.setItem(IS_DARK_MODE, `${useDarkMode}`);
+  }, [useDarkMode]);
 
   const theme = useMemo(
     () =>
-      createMuiTheme(isDarkMode ? darkTheme : lightTheme),
-    [isDarkMode]
+      createMuiTheme(useDarkMode ? darkTheme : lightTheme),
+    [useDarkMode]
   );
 
-  // const HomePage = lazy(() => import("./pages/HomePage"));
   const ProjectPage = lazy(() => import("./pages/ProjectPage"));
   const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 
@@ -51,19 +61,8 @@ const App = () => {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline/>
-        <Container maxWidth={"lg"} style={styles.main}>
-          <Tooltip
-            title={isDarkMode ? "Activer le mode jour" : "Activer le mode nuit"}
-            placement="left">
-            <IconButton
-              style={styles.darkModeButton}
-              onClick={() => switchDarkMode(!isDarkMode)}>
-              <FontAwesomeIcon
-                icon={isDarkMode ? faSun : faMoon}
-                fixedWidth
-              />
-            </IconButton>
-          </Tooltip>
+        <Container maxWidth={"lg"} className={classes.main}>
+          <DarkLightThemeButton useDarkMode={useDarkMode} setUseDarkMode={setUseDarkMode}/>
           <ErrorCatcher>
             <Suspense fallback={null}>
               <Switch>
@@ -90,15 +89,10 @@ const App = () => {
   );
 };
 
-const styles = {
+const useStyles = makeStyles((theme) => ({
   main: {
     marginTop: theme.spacing(3)
-  },
-  darkModeButton: {
-    position: "absolute",
-    top: theme.spacing(4),
-    right: theme.spacing(4)
   }
-};
+}));
 
 export default App;
