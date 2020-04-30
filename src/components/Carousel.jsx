@@ -16,24 +16,21 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
+import { Button, MobileStepper } from "@material-ui/core";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import { withStyles, withTheme } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { theme } from "../theme";
 
-import { Button, MobileStepper } from "@material-ui/core";
-
-const Carousel = props => {
-  const { screenshots, theme, classes } = props;
-  const [activeStep, setActiveStep] = React.useState(0);
+export const Carousel = ({ screenshots }) => {
+  const [activeStep, setActiveStep] = useState(0);
   const maxSteps = screenshots.length;
 
   const handleNext = () => setActiveStep(prevActiveStep => prevActiveStep + 1);
   const handleBack = () => setActiveStep(prevActiveStep => prevActiveStep - 1);
 
   return (
-    <div className={classes.root}>
+    <div style={styles.root}>
       <MobileStepper
         steps={maxSteps}
         position="static"
@@ -46,25 +43,25 @@ const Carousel = props => {
             disabled={activeStep === maxSteps - 1}>
             Suivant
             {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft />
+              <KeyboardArrowLeft/>
             ) : (
-              <KeyboardArrowRight />
+              <KeyboardArrowRight/>
             )}
           </Button>
         }
         backButton={
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
             {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
+              <KeyboardArrowRight/>
             ) : (
-              <KeyboardArrowLeft />
+              <KeyboardArrowLeft/>
             )}
             Précédent
           </Button>
         }
       />
       <img
-        className={classes.img}
+        style={styles.img}
         src={require("../assets/screenshots/" + screenshots[activeStep])}
         alt="Capture d'écran du projet"
       />
@@ -80,18 +77,18 @@ const Carousel = props => {
             disabled={activeStep === maxSteps - 1}>
             Suivant
             {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft />
+              <KeyboardArrowLeft/>
             ) : (
-              <KeyboardArrowRight />
+              <KeyboardArrowRight/>
             )}
           </Button>
         }
         backButton={
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
             {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
+              <KeyboardArrowRight/>
             ) : (
-              <KeyboardArrowLeft />
+              <KeyboardArrowLeft/>
             )}
             Précédent
           </Button>
@@ -100,7 +97,7 @@ const Carousel = props => {
     </div>
   );
 };
-const style = () => ({
+const styles = ({
   root: {
     display: "flex",
     flexDirection: "column"
@@ -113,11 +110,3 @@ const style = () => ({
     overflow: "hidden"
   }
 });
-
-Carousel.propTypes = {
-  screenshots: PropTypes.arrayOf(PropTypes.string),
-  theme: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
-};
-
-export default withTheme(withStyles(style)(Carousel));

@@ -16,99 +16,81 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
-import PropTypes from "prop-types";
-import ChipGroup from "./ChipGroup";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { withStyles } from "@material-ui/core/styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@material-ui/core";
+import React from "react";
+import { Link } from "react-router-dom";
+import { theme } from "../theme";
+import { ChipGroup } from "./ChipGroup";
 
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography
-} from "@material-ui/core";
-
-const ProjectCard = props => (
-  <Card className={props.classes.container}>
+export const ProjectCard = ({ banner, name, shortDescription, link, languages }) => (
+  <Card style={styles.container}>
     <div>
       <CardMedia
-        className={props.classes.media}
-        image={require("../assets/" + props.banner)}
-        title={props.name}
+        style={styles.media}
+        image={require("../assets/" + banner)}
+        title={name}
       />
       <CardContent>
-        <div className={props.classes.titleContainer}>
-          <Typography gutterBottom variant="h5" component="h2" className={props.classes.title}>
-            {props.name} •
+        <div style={styles.titleContainer}>
+          <Typography gutterBottom variant="h5" component="h2" style={styles.title}>
+            {name} •
           </Typography>
-          <ChipGroup chips={props.languages} />
+          <ChipGroup chips={languages}/>
         </div>
         <Typography component="p">
-          {props.shortDescription}
+          {shortDescription}
         </Typography>
       </CardContent>
 
     </div>
-    <CardActions className={props.classes.cardAction}>
+    <CardActions style={styles.cardAction}>
       <Button
         size="small"
         color="secondary"
         component={Link}
-        to={"/project/" + props.name}>
+        to={"/project/" + encodeURI(name.toLowerCase())}>
         En savoir plus
       </Button>
-      {props.link && (
+      {link && (
         <Button
           size="small"
           color="secondary"
-          href={props.link}
+          href={link}
           target="_blank"
           rel="noopener noreferrer">
           Voir le projet&nbsp;
-          <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth />
+          <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
         </Button>
       )}
     </CardActions>
   </Card>
 );
 
-ProjectCard.propTypes = {
-  banner: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  shortDescription: PropTypes.string.isRequired,
-  classes: PropTypes.object.isRequired
-};
-
-const styles = theme => ({
+const styles = ({
   container: {
     height: "100%",
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between"
   },
   media: {
     height: 340
   },
   titleContainer: {
-    display: 'flex',
-    alignItems: 'baseline',
-    justifyContent: 'flex-start',
-    flexWrap: 'wrap'
+    display: "flex",
+    alignItems: "baseline",
+    justifyContent: "flex-start",
+    flexWrap: "wrap"
   },
   title: {
     marginRight: theme.spacing(1)
   },
   cardAction: {
     marginBottom: theme.spacing(1),
-    display: 'flex',
+    display: "flex",
     bottom: 0,
-    justifyContent: 'space-between'
+    justifyContent: "space-between"
   }
 });
-
-export default withStyles(styles)(ProjectCard);

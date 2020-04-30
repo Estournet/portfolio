@@ -16,19 +16,13 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
-import PropTypes from "prop-types";
-import AuthorPicture from "../assets/author_picture.png";
-import TodayIcon from "@material-ui/icons/Today";
-import PlaceIcon from "@material-ui/icons/Place";
-import EmailIcon from "@material-ui/icons/AlternateEmail";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { withStyles } from "@material-ui/core/styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Divider,
-  Grid, Link,
+  Grid,
+  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -37,18 +31,24 @@ import {
   Paper,
   Typography
 } from "@material-ui/core";
+import EmailIcon from "@material-ui/icons/AlternateEmail";
+import PlaceIcon from "@material-ui/icons/Place";
+import TodayIcon from "@material-ui/icons/Today";
+import React from "react";
+import AuthorPicture from "../assets/author_picture.jpg";
+import { theme } from "../theme";
 
 const MY_BIRTHDATE_TIMESTAMP = 750729600000;
-const getMyAge = () => Math.abs(new Date(Date.now() - MY_BIRTHDATE_TIMESTAMP).getUTCFullYear() - 1970)
+const getMyAge = () => Math.abs(new Date(Date.now() - MY_BIRTHDATE_TIMESTAMP).getUTCFullYear() - 1970);
 
-const Me = props => (
-  <Paper className={props.classes.paper}>
+export const Me = () => (
+  <Paper style={styles.paper}>
     <Grid container spacing={5}>
-      <Grid item xs={12} className={props.classes.inline}>
+      <Grid item xs={12} style={styles.inline}>
         <img
           src={AuthorPicture}
           alt="Vincent Monard"
-          className={props.classes.picture}
+          style={styles.picture}
         />
         <div>
           <Typography align="center" variant="h2" paragraph>
@@ -60,7 +60,7 @@ const Me = props => (
         </div>
       </Grid>
       <Grid item xs={12}>
-        <Divider variant="middle" />
+        <Divider variant="middle"/>
       </Grid>
       <Grid item xs={12}>
         <Grid container spacing={2}>
@@ -68,21 +68,21 @@ const Me = props => (
             <List>
               <ListItem>
                 <ListItemIcon>
-                  <TodayIcon />
+                  <TodayIcon/>
                 </ListItemIcon>
-                <ListItemText primary={`${getMyAge()} ans`} />
+                <ListItemText primary={`${getMyAge()} ans`}/>
               </ListItem>
               <ListItem>
                 <ListItemIcon>
-                  <PlaceIcon />
+                  <PlaceIcon/>
                 </ListItemIcon>
-                <ListItemText primary="Paris, France" />
+                <ListItemText primary="Paris, France"/>
               </ListItem>
               <ListItem>
                 <ListItemIcon>
-                  <EmailIcon />
+                  <EmailIcon/>
                 </ListItemIcon>
-                <ListItemText primary="vincent.monard[at]free.fr" />
+                <ListItemText primary="vincent.monard[at]free.fr"/>
               </ListItem>
               <ListItem
                 button
@@ -90,11 +90,11 @@ const Me = props => (
                 target="_blank"
                 href="https://github.com/Estournet/">
                 <ListItemIcon>
-                  <FontAwesomeIcon icon={faGithub} size="lg" fixedWidth />
+                  <FontAwesomeIcon icon={faGithub} size="lg" fixedWidth/>
                 </ListItemIcon>
-                <ListItemText primary="github.com/Estournet/" />
+                <ListItemText primary="github.com/Estournet/"/>
                 <ListItemSecondaryAction>
-                  <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth />
+                  <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
                 </ListItemSecondaryAction>
               </ListItem>
               <ListItem
@@ -103,11 +103,11 @@ const Me = props => (
                 target="_blank"
                 href="https://www.linkedin.com/in/vincent-monard/">
                 <ListItemIcon>
-                  <FontAwesomeIcon icon={faLinkedin} size="lg" fixedWidth />
+                  <FontAwesomeIcon icon={faLinkedin} size="lg" fixedWidth/>
                 </ListItemIcon>
-                <ListItemText primary="linkedin.com/in/vincent-monard/" />
+                <ListItemText primary="linkedin.com/in/vincent-monard/"/>
                 <ListItemSecondaryAction>
-                  <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth />
+                  <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
                 </ListItemSecondaryAction>
               </ListItem>
             </List>
@@ -147,11 +147,7 @@ const Me = props => (
   </Paper>
 );
 
-Me.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-const styles = theme => ({
+const styles = ({
   paper: {
     padding: theme.spacing(2),
     display: "flex",
@@ -164,9 +160,9 @@ const styles = theme => ({
     flexWrap: "wrap"
   },
   picture: {
+    margin: theme.spacing(2),
+    boxShadow: theme.shadows[4],
     maxWidth: "256px",
-    margin: theme.spacing(2)
+    borderRadius: theme.shape.borderRadius *2
   }
 });
-
-export default withStyles(styles)(Me);

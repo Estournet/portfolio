@@ -16,36 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { Paper, Step, StepLabel, Stepper, Typography, useMediaQuery } from "@material-ui/core";
 import React from "react";
-import studies from "../datas/studies";
+import { steps } from "../datas/studies";
+import { theme } from "../theme";
 
-import {
-  Paper,
-  Step,
-  StepLabel,
-  Stepper,
-  Typography,
-  withWidth
-} from "@material-ui/core";
-
-const isXSDevice = props => props.width === "xs";
-
-const Studies = props => (
-  <Paper>
-    <Stepper
-      orientation={isXSDevice(props) ? "vertical" : "horizontal"}
-      alternativeLabel={!isXSDevice(props)}
-      activeStep={studies.steps.length}>
-      {studies.steps.map(step => (
-        <Step key={step.label}>
-          <StepLabel
-            icon={<Typography variant="body1">{step.year}</Typography>}>
-            {step.label}
-          </StepLabel>
-        </Step>
-      ))}
-    </Stepper>
-  </Paper>
-);
-
-export default withWidth()(Studies);
+export const Studies = () => {
+  const isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
+  return (
+    <Paper>
+      <Stepper
+        orientation={isSmallDevice ? "vertical" : "horizontal"}
+        alternativeLabel={!isSmallDevice}
+        activeStep={steps.length}>
+        {steps.map(step => (
+          <Step key={step.label}>
+            <StepLabel
+              icon={<Typography variant="body1">{step.year}</Typography>}>
+              {step.label}
+            </StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+    </Paper>
+  );
+};

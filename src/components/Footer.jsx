@@ -20,13 +20,12 @@ import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Divider, Link, Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
 import React from "react";
+import { theme } from "../theme";
 
-const Footer = props => (
-  <footer className={props.classes.footer}>
-    <Divider className={props.classes.divider}/>
+export const Footer = () => (
+  <footer style={styles.footer}>
+    <Divider style={styles.divider}/>
     <Typography color="textSecondary" align="center">
       <FontAwesomeIcon flip="horizontal" icon={faCopyright} fixedWidth/>{" "}
       Copyleft 2020 - Créé par Vincent Monard.
@@ -53,17 +52,11 @@ const Footer = props => (
   </footer>
 );
 
-const styles = theme => ({
+const styles = {
   footer: {
     padding: "20px 10%"
   },
   divider: {
     margin: theme.spacing(1)
   }
-});
-
-Footer.propTypes = {
-  classes: PropTypes.object.isRequired
 };
-
-export default withStyles(styles)(Footer);

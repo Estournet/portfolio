@@ -16,14 +16,12 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { Button, Grid, Typography } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import { theme } from "../theme";
 
-import { Button, Grid, Typography } from "@material-ui/core";
-
-const ErrorPage = props => (
+const ErrorPage = ({ error = "Erreur inattendue" }) => (
   <Grid
     container
     spacing={5}
@@ -33,7 +31,7 @@ const ErrorPage = props => (
     direction="column">
     <Grid item xs={12}>
       <Typography variant="h2" align="center">
-        {props.error}
+        {error}
       </Typography>
     </Grid>
     <Grid item xs={12}>
@@ -43,30 +41,18 @@ const ErrorPage = props => (
         color="primary"
         component={Link}
         to="/"
-        className={props.classes.button}>
-        {"Retourner à l'accueil"}
+        style={styles.button}>
+        Retourner à l'accueil
       </Button>
     </Grid>
   </Grid>
 );
 
-const styles = theme => ({
+const styles = {
   button: {
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4)
   }
-});
-
-ErrorPage.defaultProps = {
-  error: "Erreur inattendue"
 };
 
-ErrorPage.propTypes = {
-  classes: PropTypes.object.isRequired,
-  error: PropTypes.string
-};
-
-// As we import pages asynchroneously, the IDE thinks the component is unused.
-// See AsyncComponent.jsx and AsyncContent.jsx for more details
-// noinspection JSUnusedGlobalSymbols
-export default withStyles(styles)(ErrorPage);
+export default ErrorPage;

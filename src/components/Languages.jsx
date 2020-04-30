@@ -18,31 +18,41 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, Card, CardHeader, Grid, Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
 import React from "react";
 import { languagesSections } from "../datas/languages";
+import { theme } from "../theme";
 
-const Section = ({ classes, languagesSection }) => (
+export const Languages = () => (
+  <Grid container spacing={1}>
+    {languagesSections.map(languagesSection => (
+      <LanguageSection
+        key={languagesSection.sectionName}
+        languagesSection={languagesSection}
+      />
+    ))}
+  </Grid>
+);
+
+const LanguageSection = ({ languagesSection }) => (
   <React.Fragment>
     <Grid item xs={12}>
-      <Typography variant="h5" paragraph className={classes.title}>
+      <Typography variant="h5" paragraph style={styles.title}>
         {languagesSection.sectionName}
       </Typography>
     </Grid>
     <Grid item xs={12}>
       <Grid container spacing={1}>
         {languagesSection.languages.map(language => (
-          <Grid item md={2} sm={4} xs={12} key={language.name}>
+          <Grid item md={2} sm={4} xs={6} key={language.name}>
             <Card>
               <CardHeader
                 avatar={
-                  <Avatar className={classes.avatar}>
+                  <Avatar style={styles.avatar} color="white">
                     {language.icon ? (
                       <FontAwesomeIcon
                         icon={language.icon}
-                        size="lg"
                         fixedWidth
+                        color="white"
                       />
                     ) : (
                       language.name.charAt(0)
@@ -59,22 +69,7 @@ const Section = ({ classes, languagesSection }) => (
   </React.Fragment>
 );
 
-const Languages = props => (
-  <Grid container spacing={1}>
-    {languagesSections.map(languagesSection => (
-      <Section
-        key={languagesSection.sectionName}
-        languagesSection={languagesSection}
-        classes={props.classes}
-      />
-    ))}
-  </Grid>
-);
-
-Languages.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-const styles = theme => ({
+const styles = ({
   title: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1)
@@ -84,4 +79,3 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles)(Languages);

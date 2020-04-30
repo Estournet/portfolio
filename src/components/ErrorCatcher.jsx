@@ -32,7 +32,7 @@ class ErrorCatcher extends React.PureComponent {
 
   render() {
     const { hasError, error } = this.state;
-    if (hasError) return <ErrorPage error={error.toString()} />;
+    if (hasError) return <ErrorPage error={error.toString()}/>;
     return this.props.children;
   }
 }

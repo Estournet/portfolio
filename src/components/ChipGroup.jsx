@@ -19,9 +19,8 @@
 import { faAndroid, faJava, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Chip } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
 import React from "react";
+import { theme } from "../theme";
 
 const languages = {
   react: {
@@ -42,9 +41,9 @@ const languages = {
   }
 };
 
-const ChipGroup = props => (
-  <div className={props.classes.root}>
-    {props.chips.map(chip => (
+export const ChipGroup = ({ chips = [] }) => (
+  <div style={styles.root}>
+    {chips.map(chip => (
       <Chip
         key={chip}
         icon={
@@ -58,18 +57,13 @@ const ChipGroup = props => (
         variant="outlined"
         label={languages[chip].name}
         size="small"
-        className={props.classes.chip}
+        style={styles.chip}
       />
     ))}
   </div>
 );
 
-ChipGroup.propTypes = {
-  chips: PropTypes.arrayOf(PropTypes.string).isRequired,
-  classes: PropTypes.object.isRequired
-};
-
-const styles = theme => ({
+const styles = {
   root: {
     display: "flex",
     justifyContent: "left",
@@ -80,8 +74,7 @@ const styles = theme => ({
     marginRight: theme.spacing(1),
     marginBottom: theme.spacing(1),
     paddingLeft: theme.spacing(1),
-    paddingRigth: theme.spacing(1),
+    paddingRigth: theme.spacing(1)
   }
-});
+};
 
-export default withStyles(styles)(ChipGroup);

@@ -16,23 +16,22 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
-import PropTypes from "prop-types";
-import ProjectCard from "../components/ProjectCard";
-import Me from "../components/Me";
-import Studies from "../components/Studies.jsx";
 import { Grid, Typography } from "@material-ui/core";
+import React from "react";
+import { Languages } from "../components/Languages";
+import { Me } from "../components/Me";
+import { ProjectCard }  from "../components/ProjectCard";
+import { Studies } from "../components/Studies.jsx";
 import projectsFile from "../datas/projects.json";
-import Languages from "../components/Languages";
-import { withStyles } from "@material-ui/core/styles";
+import { theme } from "../theme";
 
-const HomePage = props => (
+const HomePage = () => (
   <Grid container spacing={4}>
     <Grid item xs={12}>
       <Me />
     </Grid>
     <Grid item xs={12}>
-      <Typography variant="h4" className={props.classes.title}>
+      <Typography variant="h4" style={styles.title}>
         Mon parcours
       </Typography>
     </Grid>
@@ -40,7 +39,7 @@ const HomePage = props => (
       <Studies />
     </Grid>
     <Grid item xs={12}>
-      <Typography variant="h4" className={props.classes.title}>
+      <Typography variant="h4" style={styles.title}>
         Mes compétences
       </Typography>
     </Grid>
@@ -48,7 +47,7 @@ const HomePage = props => (
       <Languages />
     </Grid>{" "}
     <Grid item xs={12}>
-      <Typography variant="h4" className={props.classes.title}>
+      <Typography variant="h4" style={styles.title}>
         Mes projets
       </Typography>
     </Grid>
@@ -60,14 +59,11 @@ const HomePage = props => (
   </Grid>
 );
 
-HomePage.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-const styles = theme => ({
+const styles = () => ({
   title: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1)
   }
 });
 
-export default withStyles(styles)(HomePage);
+export default HomePage;

@@ -16,75 +16,82 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
-import PropTypes from "prop-types";
-import { Button, Grid, Paper, Typography } from "@material-ui/core";
-import projectsFile from "../datas/projects.json";
-import ChipGroup from "../components/ChipGroup";
-import Carousel from "../components/Carousel";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { withStyles } from "@material-ui/core/styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Grid, Paper, Typography } from "@material-ui/core";
+import React from "react";
+import { Carousel } from "../components/Carousel";
+import { ChipGroup } from "../components/ChipGroup";
+import { projects } from "../datas/projects.json";
+import { theme } from "../theme";
+import { useParams, Redirect } from 'react-router-dom';
 
-const ProjectPage = props => {
-  const project = projectsFile.projects.filter(
-    project => project.name === props.match.params.projectName
-  )[0];
+const ProjectPage = ( ) => {
+  const params = useParams();
+  const projectNameParam = decodeURI(params.projectName.toLowerCase())
+  const project = projects.find(
+    ({ name }) => name.toLowerCase() === projectNameParam
+  );
+
+  if (!project)
+    return <Redirect to="/" />
+
+  const { logo, languages, name, descriptions, link, screenshots } = project;
 
   return (
     <Grid container spacing={1}>
       <Grid item xs={12}>
-        <Paper className={props.classes.paper}>
+        <Paper style={styles.paper}>
           <img
-            src={require("../assets/" + project.logo)}
+            src={require("../assets/" + logo)}
             alt="Logo du projet"
-            className={props.classes.picture}
+            style={styles.picture}
           />
           <div>
-            <div className={props.classes.inline}>
+            <div style={styles.inline}>
               <Typography align="center" variant="h2">
-                {project.name}
+                {name}
               </Typography>
             </div>
-            <ChipGroup chips={project.languages} />
+            <ChipGroup chips={languages}/>
           </div>
         </Paper>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h4" className={props.classes.title}>
+        <Typography variant="h4" style={styles.title}>
           En quelques mots
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        {project.descriptions.map(description => (
+        {descriptions.map(description => (
           <Typography variant="body1" paragraph key={description}>
             {description}
           </Typography>
         ))}
       </Grid>
       <Grid item xs={12}>
-        {project.link && (
+        {link && (
           <Button
             variant="contained"
             fullWidth
             color="primary"
-            href={project.link}
+            href={link}
             target="_blank"
             rel="noopener noreferrer">
             Voir le projet&nbsp;
-            <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth />
+            <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
           </Button>
         )}
       </Grid>
-      {project.screenshots && (
+      {screenshots && (
         <React.Fragment>
           <Grid item xs={12}>
-            <Typography variant="h4" className={props.classes.title}>
+            <Typography variant="h4" style={styles.title}>
               Galerie
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <Carousel screenshots={project.screenshots} />
+            <Carousel screenshots={screenshots}/>
           </Grid>
         </React.Fragment>
       )}
@@ -92,10 +99,7 @@ const ProjectPage = props => {
   );
 };
 
-ProjectPage.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-const styles = theme => ({
+const styles = {
   title: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1)
@@ -116,6 +120,6 @@ const styles = theme => ({
     justifyContent: "space-between",
     alignItems: "center"
   }
-});
+};
 
-export default withStyles(styles)(ProjectPage);
+export default ProjectPage;
