@@ -16,25 +16,83 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import { HashRouter, Route, Switch } from 'react-router-dom';
-import theme from './theme';
-import Decoration from './components/Decoration';
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider } from "@material-ui/core/styles";
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { DarkLightThemeButton } from "./components/DarkLightThemeButton";
+import ErrorCatcher from "./components/ErrorCatcher";
+import { Footer } from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import { darkTheme, lightTheme } from "./theme";
 
-const App = () => (
-	<HashRouter>
-		<>
-			<CssBaseline />
-			<MuiThemeProvider theme={theme}>
-				<Switch>
-					{/*<Route exact path="/" render={() => <Homepage />} />*/}
-					<Route path="/" render={() => <Decoration />} />
-				</Switch>
-			</MuiThemeProvider>
-		</>
-	</HashRouter>
-);
+const IS_DARK_MODE = "isDarkMode";
+
+const App = () => {
+  const classes = useStyles();
+
+  const localStorageDarkMode = JSON.parse(localStorage.getItem(IS_DARK_MODE)); // Checks
+                                                                               // localStorage
+                                                                               // setting
+  const browserOrOSDarkMode = useMediaQuery("(prefers-color-scheme: dark)"); // Checks OS or
+                                                                             // browser setting
+
+  // If no setting in localStorage, use OS/browser setting
+  const [useDarkMode, setUseDarkMode] = useState(localStorageDarkMode === null ? browserOrOSDarkMode : localStorageDarkMode);
+
+  useEffect(() => {
+    localStorage.setItem(IS_DARK_MODE, `${useDarkMode}`);
+  }, [useDarkMode]);
+
+  const theme = useMemo(
+    () =>
+      createMuiTheme(useDarkMode ? darkTheme : lightTheme),
+    [useDarkMode]
+  );
+
+  const ProjectPage = lazy(() => import("./pages/ProjectPage"));
+  const ErrorPage = lazy(() => import("./pages/ErrorPage"));
+
+  return (
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline/>
+        <Container maxWidth={"lg"} className={classes.main}>
+          <DarkLightThemeButton useDarkMode={useDarkMode} setUseDarkMode={setUseDarkMode}/>
+          <ErrorCatcher>
+            <Suspense fallback={null}>
+              <Switch>
+                <Route path="/project/:projectName">
+                  <ProjectPage/>
+                </Route>
+                <Route path="/">
+                  <HomePage/>
+                </Route>
+                {/* In last position so, if no route is matched, we fall in error page */}
+                <Route>
+                  <ErrorPage error={"404 not found"}/>
+                </Route>
+              </Switch>
+              {/* Outside of the switch so it matches every route*/}
+              <Route>
+                <Footer/>
+              </Route>
+            </Suspense>
+          </ErrorCatcher>
+        </Container>
+      </ThemeProvider>
+    </BrowserRouter>
+  );
+};
+
+const useStyles = makeStyles((theme) => ({
+  main: {
+    marginTop: theme.spacing(3)
+  }
+}));
 
 export default App;

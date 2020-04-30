@@ -16,63 +16,51 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
-import PropTypes from 'prop-types';
-import Chip from '@material-ui/core/Chip';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAndroid, faJava, faNodeJs, faReact } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Chip } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import React from "react";
 
-const languages = {
-	react: {
-		icon: faReact,
-		name: 'React'
-	},
-	android: {
-		icon: faAndroid,
-		name: 'Android'
-	},
-	java: {
-		icon: faJava,
-		name: 'Java'
-	},
-	node: {
-		icon: faNodeJs,
-		name: 'Node.js'
-	}
+export const ChipGroup = ({ chips = [] }) => {
+  const classes = useStyles();
+  const theme = useTheme();
+  const isDarkMode = theme.palette.type === "dark";
+
+  return (
+    <div className={classes.root}>
+      {chips.map(({ name, icon }) => (
+        <Chip
+          key={name}
+          icon={
+            <FontAwesomeIcon
+              icon={icon}
+              size="sm"
+              fixedWidth
+            />
+          }
+          color={isDarkMode ? "default" : "secondary"}
+          variant="outlined"
+          label={name}
+          size="small"
+          className={classes.chip}
+        />
+      ))}
+    </div>
+  );
 };
 
-const ChipGroup = props => (
-	<div className={props.classes.root}>
-		{props.chips.map(chip => (
-			<Chip
-				key={chip}
-				icon={<FontAwesomeIcon icon={languages[chip].icon} size="lg" fixedWidth />}
-				color="secondary"
-				variant="outlined"
-				label={languages[chip].name}
-				className={props.classes.chip}
-			/>
-		))}
-	</div>
-);
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "left",
+    flexWrap: "wrap"
+  },
+  chip: {
+    marginRight: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(1),
+    paddingRigth: theme.spacing(1)
+  }
+}));
 
-ChipGroup.propTypes = {
-	chips: PropTypes.arrayOf(PropTypes.string).isRequired,
-	classes: PropTypes.object.isRequired
-};
-
-const styles = theme => ({
-	root: {
-		display: 'flex',
-		justifyContent: 'left',
-		flexWrap: 'wrap',
-		paddingTop: theme.spacing.unit,
-		paddingBottom: theme.spacing.unit
-	},
-	chip: {
-		marginRight: theme.spacing.unit / 2
-	}
-});
-
-export default withStyles(styles)(ChipGroup);

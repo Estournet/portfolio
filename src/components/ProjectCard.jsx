@@ -16,60 +16,84 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from 'react';
-import Typography from '@material-ui/core/Typography/Typography';
-import withStyles from '@material-ui/core/styles/withStyles';
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Card from '@material-ui/core/Card';
-import ChipGroup from './ChipGroup';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import React from "react";
+import { Link } from "react-router-dom";
+import { ChipGroup } from "./ChipGroup";
 
-const ProjectCard = props => (
-	<Card>
-		<CardMedia className={props.classes.media} image={require('../assets/' + props.banner)} title={props.name} />
-		<CardContent>
-			<Typography gutterBottom variant="h5" component="h2">
-				{props.name}
-			</Typography>
-			<ChipGroup chips={props.languages} />
-			<Typography align="justify" component="p">
-				{props.shortDescription}
-			</Typography>
-		</CardContent>
-		<CardActions className={props.classes.cardAction}>
-			{props.link && (
-				<Button size="small" color="primary" href={props.link} target="_blank" rel="noopener noreferrer">
-					Voir le projet&nbsp;
-					<FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth />
-				</Button>
-			)}
-			<Button size="small" variant="contained" color="primary" component={Link} to={'/project/' + props.name}>
-				En savoir plus
-			</Button>
-		</CardActions>
-	</Card>
-);
+export const ProjectCard = ({ banner, name, shortDescription, link, languages }) => {
+  const classes = useStyles();
+  return (
+    <Card className={classes.container}>
+      <div>
+        <CardMedia
+          className={classes.media}
+          image={require("../assets/" + banner)}
+          title={name}
+        />
+        <CardContent>
+          <div className={classes.titleContainer}>
+            <Typography gutterBottom variant="h5" className={classes.title}>
+              {name} •
+            </Typography>
+            <ChipGroup chips={languages}/>
+          </div>
+          <Typography component="p">
+            {shortDescription}
+          </Typography>
+        </CardContent>
 
-ProjectCard.propTypes = {
-	banner: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
-	shortDescription: PropTypes.string.isRequired,
-	classes: PropTypes.object.isRequired
+      </div>
+      <CardActions className={classes.cardAction}>
+        <Button
+          size="small"
+          color="secondary"
+          component={Link}
+          to={"/project/" + encodeURI(name.toLowerCase())}>
+          En savoir plus
+        </Button>
+        {link && (
+          <Button
+            size="small"
+            color="secondary"
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer">
+            Voir le projet&nbsp;
+            <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
+          </Button>
+        )}
+      </CardActions>
+    </Card>
+  );
 };
 
-const styles = theme => ({
-	media: {
-		height: 340
-	},
-	cardAction: {
-		marginBottom: theme.spacing.unit
-	}
-});
-
-export default withStyles(styles)(ProjectCard);
+const useStyles = makeStyles((theme) => ({
+  container: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between"
+  },
+  media: {
+    height: 340
+  },
+  titleContainer: {
+    display: "flex",
+    alignItems: "baseline",
+    justifyContent: "flex-start",
+    flexWrap: "wrap"
+  },
+  title: {
+    marginRight: theme.spacing(1)
+  },
+  cardAction: {
+    padding: theme.spacing(2),
+    display: "flex",
+    bottom: 0,
+    justifyContent: "space-between"
+  }
+}));

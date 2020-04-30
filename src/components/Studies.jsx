@@ -16,30 +16,29 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from 'react';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import withWidth from '@material-ui/core/withWidth';
-import studies from '../datas/studies';
+import { Paper, Step, StepLabel, Stepper, Typography, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import React from "react";
+import { steps } from "../datas/studies";
 
-const isXSDevice = props => props.width === 'xs';
-
-const Studies = props => (
-	<Paper>
-		<Stepper
-			orientation={isXSDevice(props) ? 'vertical' : 'horizontal'}
-			alternativeLabel={!isXSDevice(props)}
-			activeStep={studies.steps.length}>
-			{studies.steps.map(step => (
-				<Step key={step.label}>
-					<StepLabel icon={<Typography variant="body1">{step.year}</Typography>}>{step.label}</StepLabel>
-				</Step>
-			))}
-		</Stepper>
-	</Paper>
-);
-
-export default withWidth()(Studies);
+export const Studies = () => {
+  const theme = useTheme();
+  const isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
+  return (
+    <Paper>
+      <Stepper
+        orientation={isSmallDevice ? "vertical" : "horizontal"}
+        alternativeLabel={!isSmallDevice}
+        activeStep={steps.length}>
+        {steps.map(step => (
+          <Step key={step.label}>
+            <StepLabel
+              icon={<Typography variant="body1">{step.year}</Typography>}>
+              {step.label}
+            </StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+    </Paper>
+  );
+};
