@@ -34,26 +34,38 @@ import {
 } from "@material-ui/core";
 
 const ProjectCard = props => (
-  <Card>
-    <CardMedia
-      className={props.classes.media}
-      image={require("../assets/" + props.banner)}
-      title={props.name}
-    />
-    <CardContent>
-      <Typography gutterBottom variant="h5" component="h2">
-        {props.name}
-      </Typography>
-      <ChipGroup chips={props.languages} />
-      <Typography align="justify" component="p">
-        {props.shortDescription}
-      </Typography>
-    </CardContent>
+  <Card className={props.classes.container}>
+    <div>
+      <CardMedia
+        className={props.classes.media}
+        image={require("../assets/" + props.banner)}
+        title={props.name}
+      />
+      <CardContent>
+        <div className={props.classes.titleContainer}>
+          <Typography gutterBottom variant="h5" component="h2" className={props.classes.title}>
+            {props.name} •
+          </Typography>
+          <ChipGroup chips={props.languages} />
+        </div>
+        <Typography component="p">
+          {props.shortDescription}
+        </Typography>
+      </CardContent>
+
+    </div>
     <CardActions className={props.classes.cardAction}>
+      <Button
+        size="small"
+        color="secondary"
+        component={Link}
+        to={"/project/" + props.name}>
+        En savoir plus
+      </Button>
       {props.link && (
         <Button
           size="small"
-          color="primary"
+          color="secondary"
           href={props.link}
           target="_blank"
           rel="noopener noreferrer">
@@ -61,14 +73,6 @@ const ProjectCard = props => (
           <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth />
         </Button>
       )}
-      <Button
-        size="small"
-        variant="contained"
-        color="primary"
-        component={Link}
-        to={"/project/" + props.name}>
-        En savoir plus
-      </Button>
     </CardActions>
   </Card>
 );
@@ -81,11 +85,29 @@ ProjectCard.propTypes = {
 };
 
 const styles = theme => ({
+  container: {
+    height: "100%",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
   media: {
     height: 340
   },
+  titleContainer: {
+    display: 'flex',
+    alignItems: 'baseline',
+    justifyContent: 'flex-start',
+    flexWrap: 'wrap'
+  },
+  title: {
+    marginRight: theme.spacing(1)
+  },
   cardAction: {
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
+    display: 'flex',
+    bottom: 0,
+    justifyContent: 'space-between'
   }
 });
 

@@ -53,7 +53,7 @@ const HomePage = props => (
       </Typography>
     </Grid>
     {projectsFile.projects.map(project => (
-      <Grid item md={4} xs={12} key={project.name}>
+      <Grid item md={4} xs={12} sm={6} key={project.name}>
         <ProjectCard {...project} />
       </Grid>
     ))}

@@ -16,38 +16,38 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopyright } from "@fortawesome/free-regular-svg-icons";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { Divider, Typography } from "@material-ui/core";
+import { Divider, Link, Typography } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
 const Footer = props => (
   <footer className={props.classes.footer}>
-    <Divider className={props.classes.divider} />
+    <Divider className={props.classes.divider}/>
     <Typography color="textSecondary" align="center">
-      <FontAwesomeIcon flip="horizontal" icon={faCopyright} fixedWidth />{" "}
+      <FontAwesomeIcon flip="horizontal" icon={faCopyright} fixedWidth/>{" "}
       Copyleft 2020 - Créé par Vincent Monard.
     </Typography>
-    <Typography variant="caption" color="textSecondary" align="center">
+    <Typography variant="body2" color="textSecondary" align="center">
       {"Site sous license "}
-      <a
+      <Link
         href="https://www.gnu.org/licenses/gpl-3.0.fr.html"
-        rel="noopener noreferrer"
         target="_blank"
-        className={props.classes.link}>
+        rel="noopener noreferrer"
+      >
         GNU GPL v3
-      </a>
+      </Link>
       {". Voir le projet sur "}
-      <a
+      <Link
         href="https://github.com/Estournet/portfolio"
-        rel="noopener noreferrer"
         target="_blank"
-        className={props.classes.link}>
+        rel="noopener noreferrer"
+      >
         GitHub
-      </a>
+      </Link>
       .
     </Typography>
   </footer>
@@ -55,14 +55,10 @@ const Footer = props => (
 
 const styles = theme => ({
   footer: {
-    padding: "20px 10%" // Top & Bottom : 20px, Left & Right : 10%
+    padding: "20px 10%"
   },
   divider: {
     margin: theme.spacing(1)
-  },
-  link: {
-    color: theme.palette.secondary.dark,
-    textDecoration: "none"
   }
 });
 

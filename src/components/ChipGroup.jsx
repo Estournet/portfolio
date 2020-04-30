@@ -16,17 +16,12 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
-import PropTypes from "prop-types";
+import { faAndroid, faJava, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAndroid,
-  faJava,
-  faNodeJs,
-  faReact
-} from "@fortawesome/free-brands-svg-icons";
-import { withStyles } from "@material-ui/core/styles";
 import { Chip } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 
 const languages = {
   react: {
@@ -53,11 +48,16 @@ const ChipGroup = props => (
       <Chip
         key={chip}
         icon={
-          <FontAwesomeIcon icon={languages[chip].icon} size="lg" fixedWidth />
+          <FontAwesomeIcon
+            icon={languages[chip].icon}
+            size="sm"
+            fixedWidth
+          />
         }
         color="secondary"
         variant="outlined"
         label={languages[chip].name}
+        size="small"
         className={props.classes.chip}
       />
     ))}
@@ -73,12 +73,14 @@ const styles = theme => ({
   root: {
     display: "flex",
     justifyContent: "left",
-    flexWrap: "wrap",
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1)
+    flexWrap: "wrap"
+
   },
   chip: {
-    marginRight: theme.spacing(0.5)
+    marginRight: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(1),
+    paddingRigth: theme.spacing(1),
   }
 });
 

@@ -16,79 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from "react";
-import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAndroid,
-  faCss3Alt,
-  faDocker,
-  faGit,
-  faHtml5,
-  faJava,
-  faLinux,
-  faNodeJs,
-  faPhp,
-  faReact
-} from "@fortawesome/free-brands-svg-icons";
 import { Avatar, Card, CardHeader, Grid, Typography } from "@material-ui/core";
-import { faDatabase } from "@fortawesome/free-solid-svg-icons";
 import { withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
+import { languagesSections } from "../datas/languages";
 
-// TODO Put those constants in a JSON file
-const webLanguages = {
-  sectionName: "Langages web",
-  langages: [
-    { name: "React", icon: faReact },
-    { name: "PHP", icon: faPhp },
-    { name: "Node.js", icon: faNodeJs },
-    { name: "HTML 5", icon: faHtml5 },
-    { name: "CSS 3", icon: faCss3Alt }
-  ]
-};
-
-const classicLanguages = {
-  sectionName: "Langages classiques",
-  langages: [
-    { name: "Java", icon: faJava },
-    { name: "Android", icon: faAndroid },
-    { name: "C" }
-  ]
-};
-
-const databases = {
-  sectionName: "Bases de données",
-  langages: [
-    { name: "MySQL", icon: faDatabase },
-    { name: "MongoDB", icon: faDatabase },
-    { name: "Firebase", icon: faDatabase }
-  ]
-};
-
-const other = {
-  sectionName: "Divers",
-  langages: [
-    { name: "GNU/Linux", icon: faLinux },
-    { name: "Git", icon: faGit },
-    { name: "Docker", icon: faDocker }
-  ]
-};
-
-const section = (props, data) => (
+const Section = ({ classes, languagesSection }) => (
   <React.Fragment>
     <Grid item xs={12}>
-      <Typography variant="h5" paragraph className={props.classes.title}>
-        {data.sectionName}
+      <Typography variant="h5" paragraph className={classes.title}>
+        {languagesSection.sectionName}
       </Typography>
     </Grid>
     <Grid item xs={12}>
       <Grid container spacing={1}>
-        {data.langages.map(language => (
+        {languagesSection.languages.map(language => (
           <Grid item md={2} sm={4} xs={12} key={language.name}>
             <Card>
               <CardHeader
                 avatar={
-                  <Avatar className={props.classes.avatar}>
+                  <Avatar className={classes.avatar}>
                     {language.icon ? (
                       <FontAwesomeIcon
                         icon={language.icon}
@@ -112,10 +61,13 @@ const section = (props, data) => (
 
 const Languages = props => (
   <Grid container spacing={1}>
-    {section(props, webLanguages)}
-    {section(props, classicLanguages)}
-    {section(props, databases)}
-    {section(props, other)}
+    {languagesSections.map(languagesSection => (
+      <Section
+        key={languagesSection.sectionName}
+        languagesSection={languagesSection}
+        classes={props.classes}
+      />
+    ))}
   </Grid>
 );
 

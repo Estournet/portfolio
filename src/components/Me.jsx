@@ -26,10 +26,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { withStyles } from "@material-ui/core/styles";
-
 import {
   Divider,
-  Grid,
+  Grid, Link,
   List,
   ListItem,
   ListItemIcon,
@@ -38,6 +37,9 @@ import {
   Paper,
   Typography
 } from "@material-ui/core";
+
+const MY_BIRTHDATE_TIMESTAMP = 750729600000;
+const getMyAge = () => Math.abs(new Date(Date.now() - MY_BIRTHDATE_TIMESTAMP).getUTCFullYear() - 1970)
 
 const Me = props => (
   <Paper className={props.classes.paper}>
@@ -68,7 +70,7 @@ const Me = props => (
                 <ListItemIcon>
                   <TodayIcon />
                 </ListItemIcon>
-                <ListItemText primary="25 ans" />
+                <ListItemText primary={`${getMyAge()} ans`} />
               </ListItem>
               <ListItem>
                 <ListItemIcon>
@@ -115,12 +117,14 @@ const Me = props => (
               Bienvenue sur mon portfolio. Sur ce site vous trouverez quelques
               informations sur mon parcours et mes compétences mais, surtout,
               accéder à mes différents projets. Je vous invite à aller sur mon{" "}
-              <a
-                target="_blank"
+              <Link
                 href="https://www.linkedin.com/in/vincent-monard/"
-                rel="noopener noreferrer">
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 LinkedIn
-              </a>{" "}
+              </Link>
+              {" "}
               si vous souhaitez plus d'information ou à m'envoyer directement un
               email.
             </Typography>

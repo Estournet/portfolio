@@ -1,9 +1,6 @@
 /**
  * Thème personnel
- * @type {Theme}
  */
-import { lightBlue, pink } from "@material-ui/core/colors";
-
 import { createMuiTheme } from "@material-ui/core/styles";
 
 export const theme = createMuiTheme({
@@ -13,10 +10,10 @@ export const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      main: lightBlue[600]
+      main: "#d9307f"
     },
     secondary: {
-      main: pink[700]
+      main: "#ad2e89"
     },
     type: "light"
   }
