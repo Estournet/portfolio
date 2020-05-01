@@ -22,11 +22,36 @@ import { Button, Grid, Paper, Typography } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { Carousel } from "../components/Carousel";
-import { ChipGroup } from "../components/ChipGroup";
-import { projects } from "../datas/projects";
+import { ChipGroup } from "../../components/ChipGroup";
+import { Gallery } from "../../components/Gallerie";
+import { nodeLanguage, reactLanguage } from "../../datas/languages";
+import { projects } from "../../datas/projects";
 
-const ProjectPage = () => {
+const lucy =   {
+  name: "Lucy",
+  logo: "lucy_logo.png",
+  banner: "lucy_banner.png",
+  shortDescription: "Lucy est un site qui permet de visualiser des statistiques sur les conversations Facebook Messenger. Il permet de voir combien de messages sont envoyés au cours du temps, qui poste le plus de messages etc.",
+  descriptions: [
+    "Lucy est un site qui permet de visualiser des statistiques sur les conversations Facebook Messenger. Il permet de voir combien de messages sont envoyés au cours du temps, qui poste le plus de messages etc.",
+    "C'est un site front-end uniquement, c'est à dire que tout est fait sur la machine du client. C'est pour cela que, sur des grosses conversations, cela prend un peu de temps pour tout calculer. Le site a été fait en React avec un Material UI et charts.js pour le design. Il permet donc de visualiser des statistiques mais aussi de chiffrer et déchiffrer des conversation. C'est pourquoi certaines conversations vous seront inaccessibles.",
+    "Je vous invite, bien évidemment, à tester le site avec la conversation de test 'Pokémon Version Rouge' ou bien avec votre propre conversation Facebook ! (Promis, je garde aucune donnée)."
+  ],
+  languages: [reactLanguage, nodeLanguage],
+  link: "https://estournet.github.io/lucy/",
+  screenshots: [
+    {
+      fileName: "screenshot_lucy_1.png",
+      description: ""
+    },
+    {
+      fileName: "screenshot_lucy_2.png",
+      description: ""
+    }
+  ]
+};
+
+const LucyProjectPage = () => {
   const classes = useStyles();
   const params = useParams();
   const projectNameParam = decodeURI(params.projectName.toLowerCase());
@@ -92,7 +117,8 @@ const ProjectPage = () => {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <Carousel screenshots={screenshots}/>
+            <Gallery screenshots={screenshots} />
+            {/*<Carousel screenshots={screenshots}/>*/}
           </Grid>
         </React.Fragment>
       )}
@@ -123,4 +149,4 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default ProjectPage;
+export default LucyProjectPage;

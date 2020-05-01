@@ -24,7 +24,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { DarkLightThemeButton } from "./components/DarkLightThemeButton";
+import { AppBar } from "./components/AppBar";
 import ErrorCatcher from "./components/ErrorCatcher";
 import { Footer } from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -35,11 +35,11 @@ const IS_DARK_MODE = "isDarkMode";
 const App = () => {
   const classes = useStyles();
 
-  const localStorageDarkMode = JSON.parse(localStorage.getItem(IS_DARK_MODE)); // Checks
-                                                                               // localStorage
-                                                                               // setting
-  const browserOrOSDarkMode = useMediaQuery("(prefers-color-scheme: dark)"); // Checks OS or
-                                                                             // browser setting
+  // Checks localStorage setting
+  const localStorageDarkMode = JSON.parse(localStorage.getItem(IS_DARK_MODE));
+
+  // Checks OS or browser setting
+  const browserOrOSDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   // If no setting in localStorage, use OS/browser setting
   const [useDarkMode, setUseDarkMode] = useState(localStorageDarkMode === null ? browserOrOSDarkMode : localStorageDarkMode);
@@ -54,7 +54,9 @@ const App = () => {
     [useDarkMode]
   );
 
-  const ProjectPage = lazy(() => import("./pages/ProjectPage"));
+  const PecheProjectPage = lazy(() => import("./pages/projects/PecheProjectPage"));
+  // const EcarlateProjectPage = lazy(() => import("./pages/projects/EcarlateProjectPage"));
+  // const LucyProjectPage = lazy(() => import("./pages/projects/LucyProjectPage"));
   const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 
   return (
@@ -62,13 +64,22 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline/>
         <Container maxWidth={"lg"} className={classes.main}>
-          <DarkLightThemeButton useDarkMode={useDarkMode} setUseDarkMode={setUseDarkMode}/>
+          <AppBar
+            useDarkMode={useDarkMode}
+            setUseDarkMode={setUseDarkMode}
+          />
           <ErrorCatcher>
             <Suspense fallback={null}>
               <Switch>
-                <Route path="/project/:projectName">
-                  <ProjectPage/>
+                {/*<Route path="/lucy">*/}
+                {/*  <LucyProjectPage/>*/}
+                {/*</Route>*/}
+                <Route path="/pêche">
+                  <PecheProjectPage/>
                 </Route>
+                {/*<Route path="/ecarlate">*/}
+                {/*  <EcarlateProjectPage/>*/}
+                {/*</Route>*/}
                 <Route path="/">
                   <HomePage/>
                 </Route>
@@ -91,7 +102,7 @@ const App = () => {
 
 const useStyles = makeStyles((theme) => ({
   main: {
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(2)
   }
 }));
 

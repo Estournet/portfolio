@@ -52,7 +52,7 @@ export const ProjectCard = ({ banner, name, shortDescription, link, languages })
           size="small"
           color="secondary"
           component={Link}
-          to={"/project/" + encodeURI(name.toLowerCase())}>
+          to={"/" + encodeURI(name.toLowerCase())}>
           En savoir plus
         </Button>
         {link && (

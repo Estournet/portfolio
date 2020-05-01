@@ -60,8 +60,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px 10%"
   },
   divider: {
-    margin: theme.spacing(2),
-    background: "linear-gradient(135deg, #5770FF 0, #FF75B3 60%, #FF7C6B 100%)"
+    margin: theme.spacing(2)
   }
 }));
 

@@ -13,10 +13,22 @@ export const projects = [
     languages: [androidLanguage],
     link: "https://play.google.com/store/apps/details?id=com.vincent.peche",
     screenshots: [
-      "screenshot_peche_1.png",
-      "screenshot_peche_2.png",
-      "screenshot_peche_3.png",
-      "screenshot_peche_4.png"
+      {
+        fileName: "screenshot_peche_1.png",
+        description: ""
+      },
+      {
+        fileName: "screenshot_peche_2.png",
+        description: ""
+      },
+      {
+        fileName: "screenshot_peche_3.png",
+        description: ""
+      },
+      {
+        fileName: "screenshot_peche_4.png",
+        description: ""
+      }
     ]
   },
   {
@@ -31,7 +43,16 @@ export const projects = [
     ],
     languages: [reactLanguage, nodeLanguage],
     link: "https://estournet.github.io/lucy/",
-    screenshots: ["screenshot_lucy_1.png", "screenshot_lucy_2.png"]
+    screenshots: [
+      {
+        fileName: "screenshot_lucy_1.png",
+        description: ""
+      },
+      {
+        fileName: "screenshot_lucy_2.png",
+        description: ""
+      }
+    ]
   },
   {
     name: "Écarlate",
@@ -46,12 +67,31 @@ export const projects = [
     ],
     languages: [reactLanguage, nodeLanguage],
     screenshots: [
-      "screenshot_ecarlate_1.png",
-      "screenshot_ecarlate_2.png",
-      "screenshot_ecarlate_3.png",
-      "screenshot_ecarlate_4.png",
-      "screenshot_ecarlate_5.png",
-      "screenshot_ecarlate_6.png"
+      {
+        fileName: "screenshot_ecarlate_1.png",
+        description: ""
+      },
+      {
+        fileName: "screenshot_ecarlate_2.png",
+        description: ""
+      },
+      {
+        fileName: "screenshot_ecarlate_3.png",
+        description: ""
+      },
+      {
+        fileName: "screenshot_ecarlate_4.png",
+        description: ""
+      },
+      {
+        fileName: "screenshot_ecarlate_5.png",
+        description: ""
+      },
+      {
+        fileName: "screenshot_ecarlate_6.png",
+        description: ""
+      }
+
     ]
   }
 ];
