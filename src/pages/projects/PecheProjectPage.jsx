@@ -48,7 +48,7 @@ const screenshots = [
   }
 ];
 
-const ProjectPage = () => {
+const PecheProjectPage = () => {
   const classes = useStyles();
   const theme = useTheme();
   const isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
@@ -156,4 +156,4 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default ProjectPage;
+export default PecheProjectPage;

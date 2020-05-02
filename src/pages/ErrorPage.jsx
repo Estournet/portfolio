@@ -30,7 +30,9 @@ const ErrorPage = ({ error = "Erreur inattendue" }) => {
       justify="center"
       alignContent="center"
       alignItems="center"
-      direction="column">
+      direction="column"
+      className={classes.container}
+    >
       <Grid item xs={12}>
         <pre>
           {error}
@@ -52,6 +54,9 @@ const ErrorPage = ({ error = "Erreur inattendue" }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    minHeight: '80vh'
+  },
   button: {
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4)

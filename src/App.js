@@ -64,12 +64,12 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline/>
         <Container maxWidth={"lg"} className={classes.main}>
-          <AppBar
-            useDarkMode={useDarkMode}
-            setUseDarkMode={setUseDarkMode}
-          />
           <ErrorCatcher>
             <Suspense fallback={null}>
+              <AppBar
+                useDarkMode={useDarkMode}
+                setUseDarkMode={setUseDarkMode}
+              />
               <Switch>
                 {/*<Route path="/lucy">*/}
                 {/*  <LucyProjectPage/>*/}
@@ -80,7 +80,7 @@ const App = () => {
                 {/*<Route path="/ecarlate">*/}
                 {/*  <EcarlateProjectPage/>*/}
                 {/*</Route>*/}
-                <Route path="/">
+                <Route exact path="/">
                   <HomePage/>
                 </Route>
                 {/* In last position so, if no route is matched, we fall in error page */}
