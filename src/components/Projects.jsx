@@ -16,23 +16,22 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { Grid } from "@material-ui/core";
 import React from "react";
-import ErrorPage from "pages/ErrorPage.jsx";
+import { projects } from "datas/projects";
+import { ProjectCard } from "components/ProjectCard";
 
-export class ErrorCatcher extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  componentDidCatch = (error, info) => {
-    this.setState({ hasError: true, error });
-    console.error(error, info);
-  };
-
-  render = () => {
-    const { hasError, error } = this.state;
-    if (hasError) return <ErrorPage error={error.toString()}/>;
-    return this.props.children;
-  };
-}
+export const Projects = () => (
+  <Grid container spacing={2}>
+    {projects.map(({ banner, name, shortDescription, link, languages }) => (
+      <Grid item md={4} xs={12} sm={6} key={name}>
+        <ProjectCard
+          banner={banner}
+          name={name}
+          shortDescription={shortDescription}
+          link={link}
+          languages={languages}/>
+      </Grid>
+    ))}
+  </Grid>
+);

@@ -18,24 +18,23 @@
 
 import { Grid, Typography } from "@material-ui/core";
 import React from "react";
-import { Languages } from "../components/Languages";
-import { Me } from "../components/Me";
-import { ProjectCard } from "../components/ProjectCard";
-import { Studies } from "../components/Studies.jsx";
-import { projects } from "../datas/projects";
+import { Languages } from "components/Languages";
+import { Me } from "components/Me";
+import { Projects } from "components/Projects";
+import { Studies } from "components/Studies";
 
 const HomePage = () => (
   <Grid container spacing={4}>
-    <Grid item xs={12}>
+    <Grid item xs={12} id={"me"}>
       <Me/>
     </Grid>
-    <Grid item xs={12}>
+    <Grid item xs={12} id={"career"}>
       <Typography variant="h4" gutterBottom>
         Mon parcours
       </Typography>
       <Studies/>
     </Grid>
-    <Grid item xs={12}>
+    <Grid item xs={12} id={"skills"}>
       <Typography variant="h4" gutterBottom>
         Mes compétences
       </Typography>
@@ -45,13 +44,7 @@ const HomePage = () => (
       <Typography variant="h4" gutterBottom>
         Mes projets
       </Typography>
-      <Grid container spacing={2}>
-        {projects.map(project => (
-          <Grid item md={4} xs={12} sm={6} key={project.name}>
-            <ProjectCard {...project} />
-          </Grid>
-        ))}
-      </Grid>
+      <Projects/>
     </Grid>
   </Grid>
 );

@@ -24,11 +24,11 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { AppBar } from "./components/AppBar";
-import ErrorCatcher from "./components/ErrorCatcher";
-import { Footer } from "./components/Footer";
-import HomePage from "./pages/HomePage";
-import { darkTheme, lightTheme } from "./theme";
+import { AppBar } from "components/AppBar";
+import { ErrorCatcher } from "components/ErrorCatcher";
+import { Footer } from "components/Footer";
+import HomePage from "pages/HomePage";
+import { darkTheme, lightTheme } from "theme";
 
 const IS_DARK_MODE = "isDarkMode";
 
@@ -54,10 +54,10 @@ const App = () => {
     [useDarkMode]
   );
 
-  const PecheProjectPage = lazy(() => import("./pages/projects/PecheProjectPage"));
-  // const EcarlateProjectPage = lazy(() => import("./pages/projects/EcarlateProjectPage"));
-  // const LucyProjectPage = lazy(() => import("./pages/projects/LucyProjectPage"));
-  const ErrorPage = lazy(() => import("./pages/ErrorPage"));
+  const PecheProjectPage = lazy(() => import("pages/projects/PecheProjectPage"));
+  const EcarlateProjectPage = lazy(() => import("pages/projects/EcarlateProjectPage"));
+  const LucyProjectPage = lazy(() => import("pages/projects/LucyProjectPage"));
+  const ErrorPage = lazy(() => import("pages/ErrorPage"));
 
   return (
     <BrowserRouter>
@@ -71,15 +71,15 @@ const App = () => {
                 setUseDarkMode={setUseDarkMode}
               />
               <Switch>
-                {/*<Route path="/lucy">*/}
-                {/*  <LucyProjectPage/>*/}
-                {/*</Route>*/}
+                <Route path="/lucy">
+                  <LucyProjectPage/>
+                </Route>
                 <Route path="/pêche">
                   <PecheProjectPage/>
                 </Route>
-                {/*<Route path="/ecarlate">*/}
-                {/*  <EcarlateProjectPage/>*/}
-                {/*</Route>*/}
+                <Route path="/écarlate">
+                  <EcarlateProjectPage/>
+                </Route>
                 <Route exact path="/">
                   <HomePage/>
                 </Route>

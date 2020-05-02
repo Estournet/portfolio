@@ -22,7 +22,7 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
 import { Link } from "react-router-dom";
-import { ChipGroup } from "./ChipGroup";
+import { ChipGroup } from "components/ChipGroup";
 
 export const ProjectCard = ({ banner, name, shortDescription, link, languages }) => {
   const classes = useStyles();
@@ -31,7 +31,7 @@ export const ProjectCard = ({ banner, name, shortDescription, link, languages })
       <div>
         <CardMedia
           className={classes.media}
-          image={require("../assets/" + banner)}
+          image={banner}
           title={name}
         />
         <CardContent>

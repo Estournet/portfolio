@@ -36,7 +36,7 @@ import EmailIcon from "@material-ui/icons/AlternateEmail";
 import PlaceIcon from "@material-ui/icons/Place";
 import TodayIcon from "@material-ui/icons/Today";
 import React from "react";
-import AuthorPicture from "../assets/author_picture.jpg";
+import { authorPicture } from "assets";
 
 const MY_BIRTHDATE_TIMESTAMP = 750729600000;
 const getMyAge = () => Math.abs(new Date(Date.now() - MY_BIRTHDATE_TIMESTAMP).getUTCFullYear() - 1970);
@@ -48,7 +48,7 @@ export const Me = () => {
       <Grid container spacing={5}>
         <Grid item xs={12} className={classes.inline}>
           <img
-            src={AuthorPicture}
+            src={authorPicture}
             alt="Vincent Monard"
             className={classes.picture}
           />

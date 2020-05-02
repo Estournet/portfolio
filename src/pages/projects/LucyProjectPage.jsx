@@ -21,65 +21,41 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Grid, Paper, Typography } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
-import { Redirect, useParams } from "react-router-dom";
-import { ChipGroup } from "../../components/ChipGroup";
-import { Gallery } from "../../components/Gallerie";
-import { nodeLanguage, reactLanguage } from "../../datas/languages";
-import { projects } from "../../datas/projects";
+import {screenshotLucy1, screenshotLucy2, logoLucy } from 'assets';
+import { ChipGroup } from "components/ChipGroup";
+import { Gallery } from "components/Gallery";
+import { nodeLanguage, reactLanguage } from "datas/languages";
 
-const lucy =   {
-  name: "Lucy",
-  logo: "lucy_logo.png",
-  banner: "lucy_banner.png",
-  shortDescription: "Lucy est un site qui permet de visualiser des statistiques sur les conversations Facebook Messenger. Il permet de voir combien de messages sont envoyés au cours du temps, qui poste le plus de messages etc.",
-  descriptions: [
-    "Lucy est un site qui permet de visualiser des statistiques sur les conversations Facebook Messenger. Il permet de voir combien de messages sont envoyés au cours du temps, qui poste le plus de messages etc.",
-    "C'est un site front-end uniquement, c'est à dire que tout est fait sur la machine du client. C'est pour cela que, sur des grosses conversations, cela prend un peu de temps pour tout calculer. Le site a été fait en React avec un Material UI et charts.js pour le design. Il permet donc de visualiser des statistiques mais aussi de chiffrer et déchiffrer des conversation. C'est pourquoi certaines conversations vous seront inaccessibles.",
-    "Je vous invite, bien évidemment, à tester le site avec la conversation de test 'Pokémon Version Rouge' ou bien avec votre propre conversation Facebook ! (Promis, je garde aucune donnée)."
-  ],
-  languages: [reactLanguage, nodeLanguage],
-  link: "https://estournet.github.io/lucy/",
-  screenshots: [
-    {
-      fileName: "screenshot_lucy_1.png",
-      description: ""
-    },
-    {
-      fileName: "screenshot_lucy_2.png",
-      description: ""
-    }
-  ]
-};
+const screenshots = [
+  {
+    file: screenshotLucy1,
+    description: "lorem ipsum dolor sit amet"
+  },
+  {
+    file: screenshotLucy2
+    // description: "2"
+  }
+];
 
 const LucyProjectPage = () => {
   const classes = useStyles();
-  const params = useParams();
-  const projectNameParam = decodeURI(params.projectName.toLowerCase());
-  const project = projects.find(
-    ({ name }) => name.toLowerCase() === projectNameParam
-  );
-
-  if (!project)
-    return <Redirect to="/"/>;
-
-  const { logo, languages, name, descriptions, link, screenshots } = project;
 
   return (
     <Grid container spacing={1}>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
           <img
-            src={require("../assets/" + logo)}
+            src={logoLucy}
             alt="Logo du projet"
-            className={classes.picture}
+            className={classes.logo}
           />
           <div>
             <div className={classes.inline}>
-              <Typography align="center" variant="h2">
-                {name}
+              <Typography align="center" variant="h3">
+                Lucy
               </Typography>
             </div>
-            <ChipGroup chips={languages}/>
+            <ChipGroup chips={[reactLanguage, nodeLanguage]}/>
           </div>
         </Paper>
       </Grid>
@@ -89,39 +65,47 @@ const LucyProjectPage = () => {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        {descriptions.map(description => (
-          <Typography variant="body1" paragraph key={description}>
-            {description}
-          </Typography>
-        ))}
+        <Typography variant="body1" paragraph>
+          Lucy est un site qui permet de visualiser des statistiques sur les conversations Facebook
+          Messenger. Il permet de voir combien de messages sont envoyés au cours du temps, qui poste
+          le plus de messages etc.",
+        </Typography>
+        <Typography variant="body1" paragraph>
+          C'est un site front-end uniquement, c'est à dire que tout est fait sur la machine du
+          client. C'est pour cela que,
+          sur des grosses conversations, cela prend un peu de temps pour tout calculer. Le site a
+          été
+          fait en React avec un Material UI et charts.js pour le design. Il permet donc de
+          visualiser
+          des statistiques mais aussi de chiffrer et déchiffrer des conversation. C'est pourquoi
+          certaines conversations vous seront inaccessibles.",
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Je vous invite, bien évidemment, à tester le site avec la conversation de test 'Pokémon
+          Version Rouge' ou bien avec votre propre conversation Facebook ! (Promis, je garde aucune
+          donnée)."
+        </Typography>
       </Grid>
       <Grid item xs={12}>
-        {link && (
-          <Button
-            variant="contained"
-            fullWidth
-            color="primary"
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer">
-            Voir le projet&nbsp;
-            <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
-          </Button>
-        )}
+        <Button
+          variant="contained"
+          fullWidth
+          color="primary"
+          href={"https://estournet.github.io/lucy/"}
+          target="_blank"
+          rel="noopener noreferrer">
+          Voir le projet&nbsp;
+          <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth/>
+        </Button>
       </Grid>
-      {screenshots && (
-        <React.Fragment>
-          <Grid item xs={12}>
-            <Typography variant="h4" className={classes.title}>
-              Galerie
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Gallery screenshots={screenshots} />
-            {/*<Carousel screenshots={screenshots}/>*/}
-          </Grid>
-        </React.Fragment>
-      )}
+      <Grid item xs={12}>
+        <Typography variant="h4" className={classes.title}>
+          Galerie
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Gallery files={screenshots} cols={2} cellHeight={400}/>
+      </Grid>
     </Grid>
   );
 };
@@ -136,11 +120,18 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "left",
     alignItems: "center",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing()
+    }
+
   },
-  picture: {
+  logo: {
     maxWidth: "128px",
-    margin: theme.spacing(2)
+    margin: theme.spacing(),
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "64px"
+    }
   },
   inline: {
     display: "flex",
