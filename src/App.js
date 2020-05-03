@@ -21,13 +21,14 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { AppBar } from "components/AppBar";
 import { ErrorCatcher } from "components/ErrorCatcher";
 import { Footer } from "components/Footer";
 import HomePage from "pages/HomePage";
+import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { darkTheme, lightTheme } from "theme";
 
 const IS_DARK_MODE = "isDarkMode";
@@ -50,7 +51,7 @@ const App = () => {
 
   const theme = useMemo(
     () =>
-      createMuiTheme(useDarkMode ? darkTheme : lightTheme),
+      responsiveFontSizes(createMuiTheme(useDarkMode ? darkTheme : lightTheme)),
     [useDarkMode]
   );
 
@@ -102,7 +103,8 @@ const App = () => {
 
 const useStyles = makeStyles((theme) => ({
   main: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2)
   }
 }));
 

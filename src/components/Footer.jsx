@@ -27,7 +27,7 @@ export const Footer = () => {
   return (
     <footer className={classes.footer}>
       <Divider className={classes.divider}/>
-      <Typography color="textSecondary" align="center">
+      <Typography variant='body2' color="textSecondary" align="center">
         <FontAwesomeIcon flip="horizontal" icon={faCopyright} fixedWidth/>{" "}
         Copyleft 2020 - Créé par Vincent Monard.
       </Typography>
@@ -56,10 +56,10 @@ export const Footer = () => {
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    padding: "20px 10%"
+    marginTop: theme.spacing(4)
   },
   divider: {
-    margin: theme.spacing(2)
+    marginBottom: theme.spacing(2)
   }
 }));
 

@@ -5,7 +5,7 @@ export const projects = [
   {
     name: "Pêche",
     banner: bannerPeche,
-    shortDescription: "Pêche est une application de gestion de dette que j'ai créée pour ma famille et moi. Elle nous permet de savoir qui doit rembourser. Vous ne pourrez pas l'utiliser sur le Play Store, ayant restreint l'accès à mes proches uniquement.",
+    shortDescription: "Pêche est une application de gestion de dette que j'ai créée pour ma famille et moi. Elle nous permet de savoir qui doit rembourser.",
     languages: [androidLanguage],
     link: "https://play.google.com/store/apps/details?id=com.vincent.peche"
   },

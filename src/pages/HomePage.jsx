@@ -17,11 +17,11 @@
  */
 
 import { Grid, Typography } from "@material-ui/core";
-import React from "react";
 import { Languages } from "components/Languages";
 import { Me } from "components/Me";
 import { Projects } from "components/Projects";
 import { Studies } from "components/Studies";
+import React from "react";
 
 const HomePage = () => (
   <Grid container spacing={4}>

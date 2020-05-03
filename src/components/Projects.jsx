@@ -17,9 +17,9 @@
  */
 
 import { Grid } from "@material-ui/core";
-import React from "react";
-import { projects } from "datas/projects";
 import { ProjectCard } from "components/ProjectCard";
+import { projects } from "datas/projects";
+import React from "react";
 
 export const Projects = () => (
   <Grid container spacing={2}>

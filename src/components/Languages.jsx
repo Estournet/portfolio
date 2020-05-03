@@ -19,8 +19,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, Card, CardHeader, Grid, Typography } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import React from "react";
 import { languagesSections } from "datas/languages";
+import React from "react";
 
 export const Languages = () => (
   <Grid container spacing={3}>

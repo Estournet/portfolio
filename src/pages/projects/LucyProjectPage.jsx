@@ -18,72 +18,88 @@
 
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Grid, Paper, Typography } from "@material-ui/core";
+import { Button, Grid, Paper, Typography, useMediaQuery } from "@material-ui/core";
+import Link from "@material-ui/core/Link";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import React from "react";
-import {screenshotLucy1, screenshotLucy2, logoLucy } from 'assets';
+import useTheme from "@material-ui/core/styles/useTheme";
+import { logoLucy, screenshotLucy1, screenshotLucy2, screenshotLucy3 } from "assets";
 import { ChipGroup } from "components/ChipGroup";
 import { Gallery } from "components/Gallery";
 import { nodeLanguage, reactLanguage } from "datas/languages";
+import React from "react";
 
 const screenshots = [
-  {
-    file: screenshotLucy1,
-    description: "lorem ipsum dolor sit amet"
-  },
-  {
-    file: screenshotLucy2
-    // description: "2"
-  }
+  { file: screenshotLucy1 },
+  { file: screenshotLucy2 },
+  { file: screenshotLucy3 }
 ];
 
 const LucyProjectPage = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
+  const cols = isSmallDevice ? 1.2 : 2.5;
+  const cellHeight = isSmallDevice ? 200 : 500;
 
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={2}>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <img
-            src={logoLucy}
-            alt="Logo du projet"
-            className={classes.logo}
-          />
-          <div>
-            <div className={classes.inline}>
-              <Typography align="center" variant="h3">
+          <Grid
+            container
+            justify="flex-start"
+            alignItems="center"
+            spacing={2}
+          >
+            <Grid item>
+              <img
+                src={logoLucy}
+                alt="Logo du projet"
+                className={classes.logo}
+              />
+            </Grid>
+            <Grid item>
+              <Typography variant="h3">
                 Lucy
               </Typography>
-            </div>
-            <ChipGroup chips={[reactLanguage, nodeLanguage]}/>
-          </div>
+              <ChipGroup chips={[reactLanguage, nodeLanguage]}/>
+            </Grid>
+          </Grid>
         </Paper>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h4" className={classes.title}>
-          En quelques mots
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Typography variant="body1" paragraph>
-          Lucy est un site qui permet de visualiser des statistiques sur les conversations Facebook
-          Messenger. Il permet de voir combien de messages sont envoyés au cours du temps, qui poste
-          le plus de messages etc.",
+        <Typography variant="h4" gutterBottom>
+          Description
         </Typography>
         <Typography variant="body1" paragraph>
-          C'est un site front-end uniquement, c'est à dire que tout est fait sur la machine du
-          client. C'est pour cela que,
-          sur des grosses conversations, cela prend un peu de temps pour tout calculer. Le site a
-          été
-          fait en React avec un Material UI et charts.js pour le design. Il permet donc de
-          visualiser
-          des statistiques mais aussi de chiffrer et déchiffrer des conversation. C'est pourquoi
-          certaines conversations vous seront inaccessibles.",
+          <strong>Lucy</strong> est un site qui permet de <b>visualiser des statistiques sur les
+          conversations Facebook
+          Messenger</b>. Il permet de voir combien de messages sont envoyés au cours du temps, qui
+          poste
+          le plus de messages etc.
         </Typography>
         <Typography variant="body1" paragraph>
-          Je vous invite, bien évidemment, à tester le site avec la conversation de test 'Pokémon
-          Version Rouge' ou bien avec votre propre conversation Facebook ! (Promis, je garde aucune
-          donnée)."
+          C'est un site <b>front-end uniquement</b>, c'est à dire que tout est fait sur la machine
+          du
+          client. C'est pour cela que, sur des grosses conversations, cela prend un peu de temps
+          pour tout calculer. Le site a
+          été fait en <b>React</b> avec un <Link target="_blank" rel="noopener noreferrer"
+                                                 href="https://material-ui.com">Material-UI&nbsp;
+          <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth size='xs'/></Link> pour
+          l'interface
+          globale et <Link target="_blank" rel="noopener noreferrer"
+                           href="https://www.chartjs.org/">
+          charts.js&nbsp;
+          <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth size='xs'/></Link> pour les
+          graphiques. Il permet donc de visualiser
+          des statistiques mais aussi de chiffrer et déchiffrer des conversations. C'est pourquoi
+          certaines conversations vous seront inaccessibles.
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Je vous invite, bien évidemment, à tester le site avec la conversation de test <i>'Pokémon
+          Version Rouge'</i> ou bien avec votre propre conversation Facebook ! (Promis, je ne garde
+          aucune
+          donnée)
         </Typography>
       </Grid>
       <Grid item xs={12}>
@@ -99,44 +115,27 @@ const LucyProjectPage = () => {
         </Button>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h4" className={classes.title}>
+        <Typography variant="h4" gutterBottom>
           Galerie
         </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Gallery files={screenshots} cols={2} cellHeight={400}/>
+        <Gallery files={screenshots} cols={cols} cellHeight={cellHeight}/>
       </Grid>
     </Grid>
   );
 };
 
 const useStyles = makeStyles((theme) => ({
-  title: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(1)
-  },
   paper: {
     padding: theme.spacing(2),
-    display: "flex",
-    justifyContent: "left",
-    alignItems: "center",
-    flexWrap: "wrap",
     [theme.breakpoints.down("sm")]: {
       padding: theme.spacing()
     }
-
   },
   logo: {
     maxWidth: "128px",
-    margin: theme.spacing(),
     [theme.breakpoints.down("sm")]: {
       maxWidth: "64px"
     }
-  },
-  inline: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center"
   }
 }));
 

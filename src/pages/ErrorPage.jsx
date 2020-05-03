@@ -55,7 +55,7 @@ const ErrorPage = ({ error = "Erreur inattendue" }) => {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    minHeight: '80vh'
+    minHeight: "80vh"
   },
   button: {
     marginTop: theme.spacing(4),

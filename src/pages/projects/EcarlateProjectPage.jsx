@@ -18,7 +18,6 @@
 
 import { Grid, Paper, Typography } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import React from "react";
 import {
   logoEcarlate,
   screenshotEcarlate1,
@@ -31,6 +30,7 @@ import {
 import { ChipGroup } from "components/ChipGroup";
 import { Gallery } from "components/Gallery";
 import { nodeLanguage, reactLanguage } from "datas/languages";
+import React from "react";
 
 const screenshots = [
   {
@@ -63,30 +63,35 @@ const EcarlateProjectPage = () => {
 
 
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={2}>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <img
-            src={logoEcarlate}
-            alt="Logo du projet"
-            className={classes.logo}
-          />
-          <div>
-            <div className={classes.inline}>
-              <Typography align="center" variant="h3">
+          <Grid
+            container
+            justify="flex-start"
+            alignItems="center"
+            spacing={2}
+          >
+            <Grid item>
+              <img
+                src={logoEcarlate}
+                alt="Logo du projet"
+                className={classes.logo}
+              />
+            </Grid>
+            <Grid item>
+              <Typography variant="h3">
                 Écarlate
               </Typography>
-            </div>
-            <ChipGroup chips={[reactLanguage, nodeLanguage]}/>
-          </div>
+              <ChipGroup chips={[reactLanguage, nodeLanguage]}/>
+            </Grid>
+          </Grid>
         </Paper>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h4" className={classes.title}>
+        <Typography variant="h4" gutterBottom>
           En quelques mots
         </Typography>
-      </Grid>
-      <Grid item xs={12}>
         <Typography variant="body1" paragraph>
           Mon projet de <b>stage de fin d'études</b>. Pendant 6 mois, j'ai développé Écarlate, un
           site de <b>gestion de projet</b>, qui présente les projets de façon globale et, ainsi,
@@ -119,11 +124,9 @@ const EcarlateProjectPage = () => {
 
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h4" className={classes.title}>
+        <Typography variant="h4" gutterBottom>
           Galerie
         </Typography>
-      </Grid>
-      <Grid item xs={12}>
         <Gallery files={screenshots} cellHeight={400} cols={2.5}/>
       </Grid>
     </Grid>
@@ -131,32 +134,17 @@ const EcarlateProjectPage = () => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  title: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(1)
-  },
   paper: {
     padding: theme.spacing(2),
-    display: "flex",
-    justifyContent: "left",
-    alignItems: "center",
-    flexWrap: "wrap",
     [theme.breakpoints.down("sm")]: {
       padding: theme.spacing()
     }
-
   },
   logo: {
     maxWidth: "128px",
-    margin: theme.spacing(),
     [theme.breakpoints.down("sm")]: {
       maxWidth: "64px"
     }
-  },
-  inline: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center"
   }
 }));
 

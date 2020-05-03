@@ -1,3 +1,4 @@
+import { Link } from "@material-ui/core";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
@@ -6,16 +7,21 @@ import React from "react";
 
 export const Gallery = ({ files, cellHeight, cols }) => {
   const classes = useStyles();
-  const {tile, imgFullWidth, gridList, titleBar} = classes;
+  const { tile, imgFullWidth, gridList, titleBar } = classes;
   return (
     <GridList
       cols={cols}
       cellHeight={cellHeight}
+      spacing={16}
       className={gridList}
     >
       {files.map(({ file, description }, i) => (
         <GridListTile
           key={i}
+          component={Link}
+          href={file}
+          target="_blank"
+          rel="noopener noreferrer"
           classes={{ imgFullWidth, tile }}
         >
           <img
@@ -28,7 +34,9 @@ export const Gallery = ({ files, cellHeight, cols }) => {
               className={titleBar}
             />
           )}
+
         </GridListTile>
+
       ))}
     </GridList>
   );
@@ -42,9 +50,8 @@ const useStyles = makeStyles((theme) => ({
     transform: "translateZ(0)"
   },
   titleBar: {
-    color: "white",
-    background:
-      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
+    color: theme.palette.grey[50],
+    backgroundColor: theme.palette.grey[600]
   },
   tile: {
     borderRadius: theme.shape.borderRadius * 2

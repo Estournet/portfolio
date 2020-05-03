@@ -35,8 +35,8 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import EmailIcon from "@material-ui/icons/AlternateEmail";
 import PlaceIcon from "@material-ui/icons/Place";
 import TodayIcon from "@material-ui/icons/Today";
-import React from "react";
 import { authorPicture } from "assets";
+import React from "react";
 
 const MY_BIRTHDATE_TIMESTAMP = 750729600000;
 const getMyAge = () => Math.abs(new Date(Date.now() - MY_BIRTHDATE_TIMESTAMP).getUTCFullYear() - 1970);
@@ -46,27 +46,32 @@ export const Me = () => {
   return (
     <Paper className={classes.paper}>
       <Grid container spacing={5}>
-        <Grid item xs={12} className={classes.inline}>
-          <img
-            src={authorPicture}
-            alt="Vincent Monard"
-            className={classes.picture}
-          />
-          <div>
-            <Typography align="center" variant="h2" paragraph>
-              Vincent Monard
-            </Typography>
-            <Typography align="center" color="textSecondary" variant="h4">
-              Développeur Fullstack
-            </Typography>
-          </div>
+        <Grid item xs={12}>
+          <Grid container justify="space-evenly" alignItems={"center"} wrap={"wrap"}>
+            <Grid item>
+              <img
+                src={authorPicture}
+                alt="Vincent Monard"
+                className={classes.picture}
+              />
+            </Grid>
+            <Grid item>
+              <Typography align="center" variant="h2" paragraph>
+                Vincent Monard
+              </Typography>
+              <Typography align="center" color="textSecondary" variant="h4">
+                Développeur Fullstack
+              </Typography>
+
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xs={12}>
           <Divider variant="middle"/>
         </Grid>
         <Grid item xs={12}>
           <Grid container spacing={2}>
-            <Grid item md={6} xs={12}>
+            <Grid item md={5} sm={6} xs={12}>
               <List>
                 <ListItem>
                   <ListItemIcon>
@@ -114,7 +119,7 @@ export const Me = () => {
                 </ListItem>
               </List>
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item md={7} sm={6} xs={12}>
               <Typography variant="body1" paragraph>
                 Bienvenue sur mon portfolio. Sur ce site vous trouverez quelques
                 informations sur mon parcours et mes compétences mais, surtout,
@@ -152,15 +157,7 @@ export const Me = () => {
 
 const useStyle = makeStyles((theme) => ({
   paper: {
-    padding: theme.spacing(2),
-    display: "flex",
-    justifyContent: "center"
-  },
-  inline: {
-    display: "flex",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    flexWrap: "wrap"
+    padding: theme.spacing(2)
   },
   picture: {
     margin: theme.spacing(2),

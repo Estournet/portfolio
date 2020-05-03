@@ -18,8 +18,8 @@
 
 import { Paper, Step, StepLabel, Stepper, Typography, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import React from "react";
 import { steps } from "datas/studies";
+import React from "react";
 
 export const Studies = () => {
   const theme = useTheme();

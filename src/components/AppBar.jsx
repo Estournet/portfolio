@@ -20,9 +20,9 @@ import { Paper } from "@material-ui/core";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import { DarkLightThemeButton } from "components/DarkLightThemeButton";
 import React from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { DarkLightThemeButton } from "components/DarkLightThemeButton";
 
 export const AppBar = ({ useDarkMode, setUseDarkMode }) => {
   const classes  = useStyle(),

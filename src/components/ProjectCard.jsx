@@ -20,9 +20,9 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import { ChipGroup } from "components/ChipGroup";
 import React from "react";
 import { Link } from "react-router-dom";
-import { ChipGroup } from "components/ChipGroup";
 
 export const ProjectCard = ({ banner, name, shortDescription, link, languages }) => {
   const classes = useStyles();
@@ -33,6 +33,8 @@ export const ProjectCard = ({ banner, name, shortDescription, link, languages })
           className={classes.media}
           image={banner}
           title={name}
+          component={Link}
+          to={"/" + encodeURI(name.toLowerCase())}
         />
         <CardContent>
           <div className={classes.titleContainer}>
@@ -45,7 +47,6 @@ export const ProjectCard = ({ banner, name, shortDescription, link, languages })
             {shortDescription}
           </Typography>
         </CardContent>
-
       </div>
       <CardActions className={classes.cardAction}>
         <Button
@@ -79,7 +80,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between"
   },
   media: {
-    height: 340
+    height: 240,
+    [theme.breakpoints.down("sm")]: {
+      height: 200
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: 160
+    }
   },
   titleContainer: {
     display: "flex",
