@@ -1,28 +1,42 @@
 /*
- * Vincent Monard
- *     Copyright (C) 2020  Vincent Monard
+ *     This program is part of Portfolio.
  *
- *     This program is free software: you can redistribute it and/or modify
+ *     Portfolio is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
  *
- *     This program is distributed in the hope that it will be useful,
+ *     Portfolio is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with Portfolio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/*
+ *     This program is part of Portfolio.
+ *
+ *     Portfolio is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     Portfolio is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with Portfolio.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Divider,
   Grid,
-  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -38,6 +52,7 @@ import {
   Today as TodayIcon
 } from "@material-ui/icons";
 import { authorPicture } from "assets";
+import { ExternalLink } from "components";
 import React from "react";
 
 const MY_BIRTHDATE_TIMESTAMP = 750729600000;
@@ -124,30 +139,17 @@ export const Me = () => {
             <Grid item md={7} sm={6} xs={12}>
               <Typography variant="body1" paragraph>
                 Bienvenue sur mon portfolio. Sur ce site vous trouverez quelques
-                informations sur mon parcours et mes compétences mais, surtout,
-                accéder à mes différents projets. Je vous invite à aller sur mon{" "}
-                <Link
-                  href="https://www.linkedin.com/in/vincent-monard/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </Link>
-                {" "}
-                si vous souhaitez plus d'information ou à m'envoyer directement un
-                email.
+                informations sur mon parcours et mes compétences et accéder à mes différents
+                projets. Je vous invite à aller sur mon <ExternalLink text="LinkedIn"
+                                                                      href="https://www.linkedin.com/in/vincent-monard/"/> si
+                vous souhaitez plus d'information ou à m'envoyer directement un email.
               </Typography>
               <Typography variant="body1" paragraph>
-                Fraichement diplomé de mon école d'ingénieur, ESIEE Paris, je suis
+                Récemment diplomé de mon école d'ingénieur, ESIEE Paris, je suis
                 un développeur polyvalent. Comme vous pourrez le voir, j'ai pu
                 travailler sur des technologies web, mobile mais j'ai aussi des
                 connaissances dans l'algorithmique, le parallélisme, les
                 compilateurs etc.
-              </Typography>
-              <Typography variant="body1" paragraph>
-                J'ai aussi pas mal voyagé, notamment en Thaïlande pour faire un
-                semestre d'études à l'étranger, ou encore en Amérique du Sud,
-                seul, pendant quelques mois.
               </Typography>
             </Grid>
           </Grid>

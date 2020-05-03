@@ -31,23 +31,29 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Portfolio.  If not, see <https://www.gnu.org/licenses/>.
  */
-import ErrorPage from "pages/ErrorPage.jsx";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "@material-ui/core";
 import React from "react";
 
-export class ErrorCatcher extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  componentDidCatch = (error, info) => {
-    this.setState({ hasError: true, error });
-    console.error(error, info);
-  };
-
-  render = () => {
-    const { hasError, error } = this.state;
-    if (hasError) return <ErrorPage error={error.toString()}/>;
-    return this.props.children;
-  };
-}
+/**
+ * @param text {String}
+ * @param href {String}
+ * @param props {Object}
+ */
+export const ExternalLink = ({ text, href, ...props }) => (
+  <Link
+    target="_blank"
+    rel="noopener noreferrer"
+    href={href}
+    noWrap
+    {...props}
+  >
+    {text}&nbsp;<FontAwesomeIcon
+    icon={faExternalLinkAlt}
+    fixedWidth
+    size='xs'
+    //   style={{ verticalAlign: 0 }}
+  />
+  </Link>
+);

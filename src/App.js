@@ -1,19 +1,35 @@
 /*
- * Vincent Monard
- *     Copyright (C) 2020  Vincent Monard
+ *     This program is part of Portfolio.
  *
- *     This program is free software: you can redistribute it and/or modify
+ *     Portfolio is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
  *
- *     This program is distributed in the hope that it will be useful,
+ *     Portfolio is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with Portfolio.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+/*
+ *     This program is part of Portfolio.
+ *
+ *     Portfolio is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     Portfolio is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with Portfolio.  If not, see <https://www.gnu.org/licenses/>.
  */
 import { Container, CssBaseline, useMediaQuery } from "@material-ui/core";
 import { frFR } from "@material-ui/core/locale";
@@ -65,18 +81,15 @@ const App = () => {
         <Container maxWidth={"lg"} className={classes.main}>
           <ErrorCatcher>
             <Suspense fallback={null}>
-              <AppBar
-                useDarkMode={useDarkMode}
-                setUseDarkMode={setUseDarkMode}
-              />
+              <AppBar useDarkMode={useDarkMode} setUseDarkMode={setUseDarkMode}/>
               <Switch>
-                <Route path="/lucy">
+                <Route exact path="/lucy">
                   <LucyProjectPage/>
                 </Route>
-                <Route path="/pêche">
+                <Route exact path="/pêche">
                   <PecheProjectPage/>
                 </Route>
-                <Route path="/écarlate">
+                <Route exact path="/écarlate">
                   <EcarlateProjectPage/>
                 </Route>
                 <Route exact path="/">
@@ -84,7 +97,7 @@ const App = () => {
                 </Route>
                 {/* In last position so, if no route is matched, we fall in error page */}
                 <Route>
-                  <ErrorPage error={"404 not found"}/>
+                  <ErrorPage error={"404 not found\nVous vous êtes perdus"}/>
                 </Route>
               </Switch>
               <Footer/>

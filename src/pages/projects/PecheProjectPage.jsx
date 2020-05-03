@@ -1,22 +1,37 @@
 /*
- * Vincent Monard
- *     Copyright (C) 2020  Vincent Monard
+ *     This program is part of Portfolio.
  *
- *     This program is free software: you can redistribute it and/or modify
+ *     Portfolio is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
  *
- *     This program is distributed in the hope that it will be useful,
+ *     Portfolio is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with Portfolio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Grid, Paper, Typography, useMediaQuery } from "@material-ui/core";
+/*
+ *     This program is part of Portfolio.
+ *
+ *     Portfolio is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     Portfolio is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with Portfolio.  If not, see <https://www.gnu.org/licenses/>.
+ */
+import { Grid, Link, Paper, Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   logoPeche,
@@ -44,7 +59,7 @@ const PecheProjectPage = () => {
         cellHeight    = 600;
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} justify="center">
       <Grid item xs={12}>
         <Paper className={classes.paper}>
           <Grid
@@ -74,33 +89,41 @@ const PecheProjectPage = () => {
           Description
         </Typography>
         <Typography variant="body1" paragraph>
-          Pêche est une application de <b>gestion de dette</b> que j'ai créée pour ma famille et
-          moi. Elle nous permet de savoir qui doit rembourser qui.
+          <b>Pêche</b> est une application de <b>gestion de dette</b> que j'ai créée pour ma famille
+          et moi. Elle nous permet gérer nos remboursements (essence, courses etc).
           J'ai écrit cette application en <b>2017</b> et, après avoir fait quelques mises à jours
           pendant un temps, est désormais laissée à l'abandon.
           Vous pouvez la télécharger sur le Play Store mais ne pourrez pas l'utiliser, ayant
           restreint l'accès à mes proches uniquement.
         </Typography>
         <Typography variant="body1" paragraph>
-          La base de données que j'utilise est Firebase Database. Je voulais essayer ce service et
+          La base de données que j'utilise est <b>Firebase Database</b>. Je voulais essayer ce
+          service et
           il s'avère très pratique (même si Firestore, encore en beta à l'époque, fait désormais
           beaucoup mieux).
-          L'application fonctionne donc en temps réel, tout s'actualise dès qu'une modification est
-          faite par un autre utilisateur.
-          {/*  TODO Meilleur texte */}
+          L'application fonctionne donc en <b>temps réel</b>, tout s'actualise dès qu'une
+          modification est
+          faite par un autre utilisateur. Cette application fût ma première fois avec Android et les
+          bases de données NoSQL. Tout n'est pas parfait, loin de là, mais j'en garde quand même un
+          très bon souvenir.
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href='https://play.google.com/store/apps/details?id=com.vincent.peche&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'
-        >
-          <img
-            className={classes.playStoreButton}
-            alt='Disponible sur Google Play'
-            src='https://play.google.com/intl/en_us/badges/static/images/badges/fr_badge_web_generic.png'/>
-        </a>
+        <Grid container justify="center">
+          <Grid item>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://play.google.com/store/apps/details?id=com.vincent.peche&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+            >
+              <img
+                className={classes.playStoreButton}
+                alt='Disponible sur Google Play'
+                src='https://play.google.com/intl/en_us/badges/static/images/badges/fr_badge_web_generic.png'/>
+            </Link>
+
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h4" gutterBottom>
@@ -126,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   playStoreButton: {
-    maxWidth: 182,
+    maxWidth: 192,
     height: "auto"
   }
 }));

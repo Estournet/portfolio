@@ -1,27 +1,42 @@
 /*
- * Vincent Monard
- *     Copyright (C) 2020  Vincent Monard
+ *     This program is part of Portfolio.
  *
- *     This program is free software: you can redistribute it and/or modify
+ *     Portfolio is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
  *
- *     This program is distributed in the hope that it will be useful,
+ *     Portfolio is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *     along with Portfolio.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/*
+ *     This program is part of Portfolio.
+ *
+ *     Portfolio is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     Portfolio is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with Portfolio.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Grid, Link, Paper, Typography, useMediaQuery } from "@material-ui/core";
+import { Button, Grid, Paper, Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { logoLucy, screenshotLucy1, screenshotLucy2, screenshotLucy3 } from "assets";
-import { ChipGroup, Gallery } from "components";
+import { ChipGroup, ExternalLink, Gallery } from "components";
 import { nodeLanguage, reactLanguage } from "datas/languages";
 import React from "react";
 
@@ -36,7 +51,7 @@ const LucyProjectPage = () => {
         theme         = useTheme(),
         isSmallDevice = useMediaQuery(theme.breakpoints.down("sm")),
         cols          = isSmallDevice ? 1.2 : 2.5,
-        cellHeight    = isSmallDevice ? 200 : 500;
+        cellHeight    = isSmallDevice ? 300 : 500;
 
   return (
     <Grid container spacing={2}>
@@ -69,7 +84,7 @@ const LucyProjectPage = () => {
           Description
         </Typography>
         <Typography variant="body1" paragraph>
-          <strong>Lucy</strong> est un site qui permet de <b>visualiser des statistiques sur les
+          <b>Lucy</b> est un site qui permet de <b>visualiser des statistiques sur les
           conversations Facebook
           Messenger</b>. Il permet de voir combien de messages sont envoyés au cours du temps, qui
           poste
@@ -80,14 +95,10 @@ const LucyProjectPage = () => {
           du
           client. C'est pour cela que, sur des grosses conversations, cela prend un peu de temps
           pour tout calculer. Le site a
-          été fait en <b>React</b> avec un <Link target="_blank" rel="noopener noreferrer"
-                                                 href="https://material-ui.com">Material-UI&nbsp;
-          <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth size='xs'/></Link> pour
-          l'interface
-          globale et <Link target="_blank" rel="noopener noreferrer"
-                           href="https://www.chartjs.org/">
-          charts.js&nbsp;
-          <FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth size='xs'/></Link> pour les
+          été fait en <b>React</b> avec un <ExternalLink text="Material-UI"
+                                                         href="https://material-ui.com"/> pour
+          l'interface globale et <ExternalLink text="charts.js"
+                                               href="https://www.chartjs.org/"/> pour les
           graphiques. Il permet donc de visualiser
           des statistiques mais aussi de chiffrer et déchiffrer des conversations. C'est pourquoi
           certaines conversations vous seront inaccessibles.
