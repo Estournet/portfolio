@@ -31,10 +31,12 @@ import {
   Paper,
   Typography
 } from "@material-ui/core";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import EmailIcon from "@material-ui/icons/AlternateEmail";
-import PlaceIcon from "@material-ui/icons/Place";
-import TodayIcon from "@material-ui/icons/Today";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  AlternateEmail as EmailIcon,
+  Place as PlaceIcon,
+  Today as TodayIcon
+} from "@material-ui/icons";
 import { authorPicture } from "assets";
 import React from "react";
 

@@ -18,7 +18,7 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Avatar, Card, CardHeader, Grid, Typography } from "@material-ui/core";
-import makeStyles from "@material-ui/core/styles/makeStyles";
+import { makeStyles } from "@material-ui/core/styles";
 import { languagesSections } from "datas/languages";
 import React from "react";
 
@@ -72,7 +72,7 @@ const LanguageSection = ({ languagesSection }) => {
   );
 };
 
-const useStyles = makeStyles(({ palette, spacing }) => ({
+const useStyles = makeStyles(({ palette }) => ({
   avatar: {
     background: palette.primary.main,
     color: palette.getContrastText(palette.primary.main)

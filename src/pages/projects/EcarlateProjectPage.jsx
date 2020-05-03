@@ -17,7 +17,7 @@
  */
 
 import { Grid, Paper, Typography } from "@material-ui/core";
-import makeStyles from "@material-ui/core/styles/makeStyles";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   logoEcarlate,
   screenshotEcarlate1,
@@ -27,8 +27,7 @@ import {
   screenshotEcarlate5,
   screenshotEcarlate6
 } from "assets";
-import { ChipGroup } from "components/ChipGroup";
-import { Gallery } from "components/Gallery";
+import { ChipGroup, Gallery } from "components";
 import { nodeLanguage, reactLanguage } from "datas/languages";
 import React from "react";
 
@@ -60,7 +59,6 @@ const screenshots = [
 
 const EcarlateProjectPage = () => {
   const classes = useStyles();
-
 
   return (
     <Grid container spacing={2}>

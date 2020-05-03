@@ -17,7 +17,7 @@
  */
 
 import { Grid } from "@material-ui/core";
-import { ProjectCard } from "components/ProjectCard";
+import { ProjectCard } from "components";
 import { projects } from "datas/projects";
 import React from "react";
 

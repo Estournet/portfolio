@@ -15,17 +15,15 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
-import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { AppBar } from "components/AppBar";
-import { ErrorCatcher } from "components/ErrorCatcher";
-import { Footer } from "components/Footer";
+import { Container, CssBaseline, useMediaQuery } from "@material-ui/core";
+import { frFR } from "@material-ui/core/locale";
+import {
+  createMuiTheme,
+  makeStyles,
+  responsiveFontSizes,
+  ThemeProvider
+} from "@material-ui/core/styles";
+import { AppBar, ErrorCatcher, Footer } from "components";
 import HomePage from "pages/HomePage";
 import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -51,14 +49,14 @@ const App = () => {
 
   const theme = useMemo(
     () =>
-      responsiveFontSizes(createMuiTheme(useDarkMode ? darkTheme : lightTheme)),
+      responsiveFontSizes(createMuiTheme(useDarkMode ? darkTheme : lightTheme, frFR)),
     [useDarkMode]
   );
 
-  const PecheProjectPage = lazy(() => import("pages/projects/PecheProjectPage"));
-  const EcarlateProjectPage = lazy(() => import("pages/projects/EcarlateProjectPage"));
-  const LucyProjectPage = lazy(() => import("pages/projects/LucyProjectPage"));
-  const ErrorPage = lazy(() => import("pages/ErrorPage"));
+  const PecheProjectPage    = lazy(() => import("pages/projects/PecheProjectPage")),
+        EcarlateProjectPage = lazy(() => import("pages/projects/EcarlateProjectPage")),
+        LucyProjectPage     = lazy(() => import("pages/projects/LucyProjectPage")),
+        ErrorPage           = lazy(() => import("pages/ErrorPage"));
 
   return (
     <BrowserRouter>
@@ -89,10 +87,7 @@ const App = () => {
                   <ErrorPage error={"404 not found"}/>
                 </Route>
               </Switch>
-              {/* Outside of the switch so it matches every route*/}
-              <Route>
-                <Footer/>
-              </Route>
+              <Footer/>
             </Suspense>
           </ErrorCatcher>
         </Container>

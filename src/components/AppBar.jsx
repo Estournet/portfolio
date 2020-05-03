@@ -16,11 +16,9 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Paper } from "@material-ui/core";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Link from "@material-ui/core/Link";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import { DarkLightThemeButton } from "components/DarkLightThemeButton";
+import { Breadcrumbs, Link, Paper } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { DarkLightThemeButton } from "components";
 import React from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 

@@ -22,8 +22,9 @@ import { steps } from "datas/studies";
 import React from "react";
 
 export const Studies = () => {
-  const theme = useTheme();
-  const isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
+  const theme         = useTheme(),
+        isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Paper>
       <Stepper

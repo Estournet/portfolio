@@ -18,13 +18,10 @@
 
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Grid, Paper, Typography, useMediaQuery } from "@material-ui/core";
-import Link from "@material-ui/core/Link";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import useTheme from "@material-ui/core/styles/useTheme";
+import { Button, Grid, Link, Paper, Typography, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { logoLucy, screenshotLucy1, screenshotLucy2, screenshotLucy3 } from "assets";
-import { ChipGroup } from "components/ChipGroup";
-import { Gallery } from "components/Gallery";
+import { ChipGroup, Gallery } from "components";
 import { nodeLanguage, reactLanguage } from "datas/languages";
 import React from "react";
 
@@ -35,11 +32,11 @@ const screenshots = [
 ];
 
 const LucyProjectPage = () => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
-  const cols = isSmallDevice ? 1.2 : 2.5;
-  const cellHeight = isSmallDevice ? 200 : 500;
+  const classes       = useStyles(),
+        theme         = useTheme(),
+        isSmallDevice = useMediaQuery(theme.breakpoints.down("sm")),
+        cols          = isSmallDevice ? 1.2 : 2.5,
+        cellHeight    = isSmallDevice ? 200 : 500;
 
   return (
     <Grid container spacing={2}>

@@ -18,8 +18,10 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
+import { unregister } from "registerServiceWorker";
 import App from "./App";
-// import registerServiceWorker from "./registerServiceWorker";
+
+console.log("%cWhat are you looking at ? 😏", "color: #ad2e89; font-size: 24px");
 
 ReactDOM.render(<App/>, document.getElementById("root"));
-// registerServiceWorker();
+unregister();

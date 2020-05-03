@@ -19,8 +19,8 @@
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@material-ui/core";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import { ChipGroup } from "components/ChipGroup";
+import { makeStyles } from "@material-ui/core/styles";
+import { ChipGroup } from "components";
 import React from "react";
 import { Link } from "react-router-dom";
 

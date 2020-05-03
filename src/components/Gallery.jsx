@@ -1,8 +1,5 @@
-import { Link } from "@material-ui/core";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import makeStyles from "@material-ui/core/styles/makeStyles";
+import { GridList, GridListTile, GridListTileBar, Link } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
 export const Gallery = ({ files, cellHeight, cols }) => {

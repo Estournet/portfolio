@@ -1,6 +1,19 @@
+const fontFamily = [
+  "Google Sans", "Roboto",
+  "-apple-system",
+  "BlinkMacSystemFont",
+  "\"Segoe UI\"",
+  "\"Helvetica Neue\"",
+  "Arial",
+  "sans-serif",
+  "\"Apple Color Emoji\"",
+  "\"Segoe UI Emoji\"",
+  "\"Segoe UI Symbol\""
+].join(",");
+
 export const lightTheme = {
   typography: {
-    fontFamily: ["Google Sans", "Roboto"].join(",")
+    fontFamily
   },
   palette: {
     primary: {
@@ -15,7 +28,7 @@ export const lightTheme = {
 
 export const darkTheme = {
   typography: {
-    fontFamily: ["Google Sans", "Roboto"].join(",")
+    fontFamily
   },
   palette: {
     primary: {
